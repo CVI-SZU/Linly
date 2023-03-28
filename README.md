@@ -8,7 +8,7 @@ ChatLLaMA 支持简繁体中文、英文、日文等多语言。
 LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到中文上，首先进行中文增量预训练，
 使用的语料包括中英翻译、中文维基/百度百科、社区互动问答、科学文献等。再通过指令微调得到 ChatLLaMA。
 
-
+![](chatllama.jpg)
 ## 快速开始
 
 安装依赖：pytorch，sentencepiece、deepspeed
