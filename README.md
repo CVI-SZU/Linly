@@ -9,18 +9,35 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 使用的语料包括中英翻译、中文维基/百度百科、社区互动问答、科学文献等。再通过指令微调得到 ChatLLaMA。
 
 ![](assets/chatllama.jpg)
-## 快速开始
 
-安装依赖：pytorch，sentencepiece、deepspeed
+## News
 
+**[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
 
-#### 模型权重下载
+## 目录
+
++ [模型下载](#模型下载) 
++ [快速开始](#快速开始)
++ [模型训练](#模型训练)
++ [模型部署](#模型部署)
++ [生成示例](#生成示例)
++ [局限性](#局限性)
++ [中文指令数据集](#中文指令数据集)
++ [License](#License)
+
+## 模型下载
 | **参数量级** | **中文LLaMA基础模型** | **ChatLLaMA**       | **ChatLLaMA-INT8** |
 |----------|-----------------|---------------------|------------------------|
 | **7B**       |                 | [ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B) |                        |
 | **13B**      |                 |                     |                        |
 | **30B**      |                 |                     |                        |
 | **65B**      |                 |                     |                        |
+
+
+## 快速开始
+
+安装依赖：pytorch，sentencepiece、deepspeed
+
 
 
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
@@ -44,11 +61,10 @@ python3 scripts/generate_lm.py --load_model_path ../ChineseChatLLaMA//ChatLLaMA_
                                --test_path beginning.txt --prediction_path generated_sentence.txt \
                                --config_path models/llama/7b_config.json --seq_length 512
 ```
-### 模型量化
 
-TODO
 
-## 中文增量预训练
+## 模型训练
+### 中文增量预训练
 
 以 7B 模型为例，首先下载[预训练LLaMA权重](https://huggingface.co/decapoda-research/llama-7b-hf)，转换到TencentPretrain格式：
 
@@ -77,7 +93,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.jso
                       --total_steps 300000 --save_checkpoint_steps 5000 --batch_size 24
 ```
 
-## 中文指令学习
+### 中文指令学习
 
 构建[指令数据集](#中文指令数据集)并预处理：
 
@@ -97,6 +113,11 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.jso
                       --world_size 8 --data_processor lm \
                       --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
 ```
+
+## 模型部署
+
+
+TODO
 
 ## 生成示例
 
