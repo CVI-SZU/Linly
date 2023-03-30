@@ -49,15 +49,9 @@ git clone https://github.com/Tencent/TencentPretrain.git
 cd TencentPretrain 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
 
-python3 scripts/generate_lm_deepspeed.py --load_model_path ../ChatLLaMA-zh-7B/ChatLLaMA_7B.bin --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model \
-                               --test_path beginning.txt --prediction_path generated_sentence.txt \
-                               --config_path models/llama/7b_config.json --seq_length 512
-```
+#将项目中的 generate_chatllama.py 复制到 scripts/
 
-### CPU 推理
-
-```bash
-python3 scripts/generate_lm.py --load_model_path ../ChineseChatLLaMA//ChatLLaMA_7B.bin --spm_model_path ../ChineseChatLLaMA/tokenizer.model \
+python3 scripts/generate_chatllama.py --load_model_path ../ChatLLaMA-zh-7B/ChatLLaMA_7B.bin --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model \
                                --test_path beginning.txt --prediction_path generated_sentence.txt \
                                --config_path models/llama/7b_config.json --seq_length 512
 ```
