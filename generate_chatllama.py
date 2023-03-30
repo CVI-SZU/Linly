@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
 
     model = GenerateLm(args)
-    model = load_model(model, args.load_model_path, True)
+    model = load_model(model, args.load_model_path)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
@@ -111,4 +111,4 @@ if __name__ == '__main__':
         src_tensor = torch.cat([src_tensor, next_token.view(1, 1)], dim=1)
         seg_tensor = torch.cat([seg_tensor, torch.tensor([[1]]).to(device)], dim=1)
 
-    print(args.tokenizer.decode([token_id.item() for token_id in src_tensor[0]]))
+    print(args.tokenizer.sp_model.decode([token_id.item() for token_id in src_tensor[0]]))
