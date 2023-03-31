@@ -336,7 +336,7 @@ CSL 数据包含 2010-2020 年发表的中文核心期刊论文元信息（标�
 ## 交流和问题反馈
 
 
-![](assets/wechat_group.jpg)
+![](assets/wechat_group.jpg){:height="50%" width="50%"}
 
 
 ## Licence
