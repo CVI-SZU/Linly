@@ -335,8 +335,8 @@ CSL 数据包含 2010-2020 年发表的中文核心期刊论文元信息（标�
 
 ## 交流和问题反馈
 
-搜索添加微信号：chatllama
 
+![](assets/wechat_group.jpg)
 
 
 ## Licence
