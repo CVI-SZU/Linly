@@ -12,33 +12,34 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 ## News
 
+**[2023/4/1]** 更新 4-bit 量化版本 ChatLLaMA 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理  
 **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
 
 ## 目录
 
 + [模型下载](#模型下载) 
 + [快速开始](#快速开始)
++ [CPU本地部署](#CPU本地部署)
 + [模型训练](#模型训练)
-+ [模型部署](#模型部署)
 + [生成示例](#生成示例)
 + [局限性](#局限性)
 + [中文指令数据集](#中文指令数据集)
 + [交流和问题反馈](#交流和问题反馈)
 + [License](#License)
 
+
 ## 模型下载
-| **参数量级** | **中文LLaMA基础模型** | **ChatLLaMA**       | **ChatLLaMA-INT8** |
-|----------|-----------------|---------------------|------------------------|
-| **7B**       |                 | [ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B) |                        |
-| **13B**      |                 |                     |                        |
-| **30B**      |                 |                     |                        |
-| **65B**      |                 |                     |                        |
+| **参数量级** | **中文LLaMA基础模型** | **ChatLLaMA**       | **ChatLLaMA-INT4**       |
+|----------|-----------------|---------------------|--------------------------|
+| **7B**       |                 | [ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B) | [ChatLLaMA-zh-7B-int4](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4) |
+| **13B**      |                 |                     |                          |
+| **30B**      |                 |                     |                          |
+| **65B**      |                 |                     |                          |
 
 
 ## 快速开始
 
 安装依赖：pytorch，sentencepiece、deepspeed
-
 
 
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
@@ -56,6 +57,21 @@ python3 scripts/generate_chatllama.py --load_model_path ../ChatLLaMA-zh-7B/ChatL
                                --test_path beginning.txt --prediction_path generated_sentence.txt \
                                --config_path models/llama/7b_config.json --seq_length 512
 ```
+
+## CPU本地部署
+
+将int4量化后的模型权重部署在本地使用CPU推理。
+
+```bash
+git clone https://github.com/ggerganov/llama.cpp.git
+git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4
+
+cd llama.cpp
+make
+./main -m ../ChatLLaMA-zh-7B-int4/chatllama-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 128
+
+```
+
 
 
 ## 模型训练
@@ -109,10 +125,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.jso
                       --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
 ```
 
-## 模型部署
 
-
-TODO
 
 ## 生成示例
 
