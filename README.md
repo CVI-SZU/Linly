@@ -56,7 +56,7 @@ vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？
 
 python3 scripts/generate_chatllama.py --load_model_path ../ChatLLaMA-zh-7B/ChatLLaMA_7B.bin --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model \
                                --test_path beginning.txt --prediction_path generated_sentence.txt \
-                               --config_path models/llama/7b_config.json --seq_length 512
+                               --config_path models/llama/7b_config.json --seq_length 256
 ```
 
 ## CPU本地部署
@@ -69,7 +69,7 @@ git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4
 
 cd llama.cpp
 make
-./main -m ../ChatLLaMA-zh-7B-int4/chatllama-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 128
+./main -m ../ChatLLaMA-zh-7B-int4/chatllama-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 256
 
 ```
 
@@ -82,7 +82,7 @@ make
 
 ```
 python3 scripts/convert_llama_from_huggingface_to_tencentpretrain.py --input_model_path $LLaMA_HF_PATH \
-                       --output_model_path  models/llama-7b.bin --layers_num 28
+                       --output_model_path  models/llama-7b.bin --layers_num 32
 ```
 
 下载[中文预训练语料](https://github.com/dbiir/UER-py/wiki/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE)，
