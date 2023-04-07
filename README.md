@@ -1,14 +1,23 @@
 
-## Chinese-ChatLLaMA
+![](https://img.shields.io/github/last-commit/ydli-ai/Chinese-ChatLLaMA)
+![](https://img.shields.io/github/commit-activity/m/ydli-ai/Chinese-ChatLLaMA)
+![](https://img.shields.io/github/languages/top/ydli-ai/Chinese-ChatLLaMA)
+![](https://img.shields.io/github/stars/ydli-ai/Chinese-ChatLLaMA?style=social)
+
+
 
 本项目向社区提供中文对话模型 ChatLLama 、中文基础模型 LLaMA-zh 及其训练数据。
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 项目也将陆续开放 7B、13B、30B、65B 规模的中文基础模型 LLaMA-zh 权重。
-
+模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、30B、65B 规模的中文基础模型 LLaMA-zh 权重。
+    
 ChatLLaMA 支持简繁体中文、英文、日文等多语言。
 LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到中文上，首先进行中文增量预训练，
-使用的语料包括中英翻译、中文维基/百度百科、社区互动问答、科学文献等。再通过指令微调得到 ChatLLaMA。
+使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Chinese-ChatLLaMA。
 
-![](assets/chatllama.jpg)
+**项目特点**
++ 通过 full-tuning 获得中文模型权重
++ 训练细节公开可复现，使用开源代码和数据训练
++ 提供目前最大的中文 LLaMA 模型
++ 多种量化方案，支持 CUDA 和边缘设备部署推理
 
 ## News
 
@@ -27,21 +36,20 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + [中文指令数据集](#中文指令数据集)
 + [交流和问题反馈](#交流和问题反馈)
 + [License](#License)
++ [Contributors](#Contributors)
 
 
 ## 模型下载
-| **参数量级** | **中文LLaMA基础模型** | **ChatLLaMA**       | **ChatLLaMA-INT4**       |
-|----------|-----------------|---------------------|--------------------------|
-| **7B**       |                 | [ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B) | [ChatLLaMA-zh-7B-int4](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4) |
-| **13B**      |                 |                     |                          |
-| **30B**      |                 |                     |                          |
-| **65B**      |                 |                     |                          |
+
+**7B**：[对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**13B**：预计4月11日公开  
+**30B**：训练中  
+**65B**：训练中
 
 
 ## 快速开始
 
 安装依赖：pytorch，sentencepiece、deepspeed
-
 
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
 
@@ -362,8 +370,16 @@ CSL 数据包含 2010-2020 年发表的中文核心期刊论文元信息（标�
 
 由于微信群达到人数上限，搜索微信号 chatllama，添加为好友后拉入群聊。
 
-
-
 ## Licence
 
-GNU General Public License v3.0
+Our code and documents are released under Apache Licence 2.0
+
+Following LLaMA, our pre-trained weights are released under GNU General Public License v3.0
+
+## Contributors
+We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chanese-ChatLLaMA projects.
+
+Authors: Yudong Li, Zhe Zhao, Yuhao Feng, Cheng Hou, Shuang Liu, Hao Li, Xianxu Hou
+
+Corresponding Authors: Linlin Shen, Kimmo Yan
+
