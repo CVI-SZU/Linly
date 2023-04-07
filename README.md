@@ -15,7 +15,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 **项目特点**
 + 通过 full-tuning 获得中文模型权重
-+ 训练细节公开可复现，使用开源代码和数据训练
++ 模型细节公开可复现，使用开源代码和数据训练
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
@@ -40,6 +40,11 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 
 ## 模型下载
+
+**使用须知** ⚠️ 
+
+模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议开放，仅供研究使用，不能用于商业目的。
+
 
 **7B**：[对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
 **13B**：预计4月11日公开  
@@ -377,9 +382,10 @@ Our code and documents are released under Apache Licence 2.0
 Following LLaMA, our pre-trained weights are released under GNU General Public License v3.0
 
 ## Contributors
+
 We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chanese-ChatLLaMA projects.
 
-Authors: Yudong Li, Zhe Zhao, Yuhao Feng, Cheng Hou, Shuang Liu, Hao Li, Xianxu Hou
+Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](), [Yuhao Feng](), [Cheng Hou](), [Shuang Liu](), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
 
-Corresponding Authors: Linlin Shen, Kimmo Yan
+Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN), Kimmo Yan
 
