@@ -21,6 +21,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 ## News
 
++ **[2023/4/8]** 更新 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行, see [TencentPretrain](https://github.com/Tencent/TencentPretrain)
+
 + **[2023/4/1]** 更新 4-bit 量化版本 ChatLLaMA 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理
 
 + **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
@@ -383,7 +385,7 @@ Following LLaMA, our pre-trained weights are released under GNU General Public L
 
 ## Contributors
 
-We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chanese-ChatLLaMA projects.
+We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chinese-ChatLLaMA projects.
 
 Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](), [Yuhao Feng](), [Cheng Hou](), [Shuang Liu](), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
 
