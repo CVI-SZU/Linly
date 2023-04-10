@@ -14,8 +14,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Chinese-ChatLLaMA。
 
 **项目特点**
-+ 通过 full-tuning 获得中文模型权重
-+ 模型细节公开可复现，使用开源代码和数据训练
++ 通过 Full-tuning （全参数训练）获得中文模型权重
++ 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
@@ -26,6 +26,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + **[2023/4/1]** 更新 4-bit 量化版本 ChatLLaMA 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理
 
 + **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
+
 
 ## 目录
 
@@ -372,6 +373,8 @@ CSL 数据包含 2010-2020 年发表的中文核心期刊论文元信息（标�
 数据整理成统一的json格式，支持TencentPretrain加载和训练。
 
 进行中
+
+
 
 ## 交流和问题反馈
 
