@@ -19,6 +19,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
+[中文预训练语料]() | [中文指令精调数据集]() | [模型量化部署]() | [领域微调示例]()
+
 ## News
 
 + **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行 
@@ -49,15 +51,16 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议开放，仅供研究使用，不能用于商业目的。
 
 
-**7B**：[对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
-**13B**：预计4月11日公开  
-**30B**：训练中  
-**65B**：训练中
+**7B**：[基础模型 LLaMA_zh]() ｜ [对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**13B**：预计 ~~4月11日~~ 4月20日公开  
+**30B**：基础模型预计4月20日公开  
+**65B**：规划中
 
+模型仍在迭代中，每周更新一次新版模型权重。
 
 ## 快速开始
 
-安装依赖：pytorch，sentencepiece、deepspeed
+安装依赖，建议使用环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 nccl2.10.3 deepspeed0.8.3 torch1.9.0
 
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
 
@@ -67,6 +70,8 @@ git clone https://github.com/Tencent/TencentPretrain.git
 
 cd TencentPretrain 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
+
+# 修改 utils/constants.py 文件L4，将 special_tokens_map.json 改为 llama_special_tokens_map.json
 
 #将项目中的 generate_chatllama.py 复制到 scripts/
 
