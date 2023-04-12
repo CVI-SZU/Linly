@@ -1,4 +1,5 @@
 import json
+import random
 
 with open('csl_camera_readly.tsv') as f:
     lines = f.readlines()
@@ -29,6 +30,11 @@ with open('csl.json', 'w') as fw:
                    {"instruction":"根据关键词判断论文所属的门类：\n",'input': k+'\n', 'output': c},
                    {"instruction":"这篇文章属于哪个门类？\n",'input': a+'\n', 'output': c},
                    {"instruction":"判断论文所属的门类：\n",'input': a+'\n', 'output': c},
+                   {"instruction":"生成一篇关于" +d  +"的论文标题：\n",'input': "", 'output': t},
+                   {"instruction":"生成一篇关于" +c  +"的论文标题：\n",'input': "", 'output': t},
+                   {"instruction":"生成一篇" +d  +"的论文摘要：\n",'input': "", 'output': a},
+                   {"instruction":"生成一篇和" +d  +"有关的论文标题。\n",'input': "", 'output': t},
+                   {"instruction":"生成一篇和" +d  +"相关的论文摘要。\n",'input': "", 'output': a},
                    ]
 
         for i in random.sample(outputs, 1):
