@@ -16,7 +16,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Chinese-ChatLLaMA。
 
 **项目特点**
-+ 通过 Full-tuning （全参数训练）获得中文模型权重
++ 通过 Full-tuning （全参数训练）获得中文模型权重，提供 TencentPretrain 与 HuggingFace 版本
 + 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
@@ -42,6 +42,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + [局限性](#局限性)
 + [中文预训练/指令数据集](#中文预训练/指令数据集)
 + [交流和问题反馈](#交流和问题反馈)
++ [TODO List](#TODO List)
 + [License](#License)
 + [Contributors](#Contributors)
 
@@ -308,7 +309,14 @@ ChatLLaMA 完全基于社区开放语料训练，内容未经人工修正。受�
 
 由于微信群达到人数上限，搜索微信号 chatllama，添加为好友后拉入群聊。
 
-## Licence
+## TODO List
+
+- [ ] HuggingFace 转换脚本和权重上传
+- [ ] 支持量化模型 CUDA 部署
+- [ ] ChatLLaMA 领域适应案例
+- [ ] 强化学习
+
+## License
 
 Our code and documents are released under Apache Licence 2.0
 
