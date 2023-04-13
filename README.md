@@ -21,7 +21,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
-[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例]()
+[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#TODO List)
 
 ## News
 
@@ -31,6 +31,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 + **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
 
+-----
 
 ## 目录
 
@@ -42,7 +43,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + [局限性](#局限性)
 + [中文预训练/指令数据集](#中文预训练/指令数据集)
 + [交流和问题反馈](#交流和问题反馈)
-+ [TODO List](#TODO List)
++ [TODO-List](#TODO List)
 + [License](#License)
 + [Contributors](#Contributors)
 
@@ -51,7 +52,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 **使用须知** ⚠️ 
 
-模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议开放，仅供研究使用，不能用于商业目的。
+模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议，仅供研究使用，不能用于商业目的。
+请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
 **7B**：[基础模型 LLaMA_zh]() ｜ [对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
@@ -68,6 +70,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
 
 ```bash
+git lfs install
 git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B
 git clone https://github.com/Tencent/TencentPretrain.git
 
@@ -88,6 +91,7 @@ python3 scripts/generate_chatllama.py --load_model_path ../ChatLLaMA-zh-7B/ChatL
 将int4量化后的模型权重部署在本地使用CPU推理。
 
 ```bash
+git lfs install
 git clone https://github.com/ggerganov/llama.cpp.git
 git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4
 
@@ -326,7 +330,7 @@ Following LLaMA, our pre-trained weights are released under GNU General Public L
 
 We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chinese-ChatLLaMA projects.
 
-Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](), [Yuhao Feng](), [Cheng Hou](), [Shuang Liu](), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
+Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](https://github.com/zhezhaoa), [Yuhao Feng](https://github.com/fengyh3), [Cheng Hou](https://github.com/hhou435), [Shuang Liu](), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
 
 Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN), Kimmo Yan
 
