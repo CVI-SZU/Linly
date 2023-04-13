@@ -43,7 +43,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + [局限性](#局限性)
 + [中文预训练/指令数据集](#中文预训练/指令数据集)
 + [交流和问题反馈](#交流和问题反馈)
-+ [TODO-List](#TODO List)
++ [TODO-List](#todo-list)
 + [License](#License)
 + [Contributors](#Contributors)
 
