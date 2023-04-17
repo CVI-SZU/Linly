@@ -93,7 +93,7 @@ python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
 
 TODO
 
-### 4-bit 推理加速
+### Int8 推理加速
 
 ```bash
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
@@ -114,9 +114,9 @@ curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"questi
 ```
 
 
-### 5-bit CPU本地部署
+### Int4 CPU本地部署
 
-将int4量化后的模型权重部署在本地使用CPU推理。
+将 Int4 量化后的模型权重部署在本地使用CPU推理。
 
 ```bash
 git lfs install
