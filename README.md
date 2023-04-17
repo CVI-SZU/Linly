@@ -21,9 +21,11 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
-[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#TODO List)
+[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#todo-list)
 
 ## News
+
++ **[2023/4/17]** [llama_inference](https://github.com/fengyh3/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
 + **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行 
 
@@ -37,7 +39,6 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 + [模型下载](#模型下载) 
 + [快速开始](#快速开始)
-+ [CPU本地部署](#CPU本地部署)
 + [模型训练](#模型训练)
 + [生成示例](#生成示例)
 + [局限性](#局限性)
@@ -56,37 +57,65 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 LLaMA_zh]() ｜ [对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)   ｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**7B**：[基础模型 LLaMA_zh]()｜ [对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
 **13B**：预计 ~~4月11日~~ 4月20日公开  
 **33B**：基础模型预计4月20日公开  
 **65B**：规划中
+
+<div style="display:none">
+🤗**HuggingFace模型**  
+[7B 基础模型]()｜ [7B 对话模型]() | [13B 基础模型]()
+</div>
 
 模型仍在迭代中，每周更新一次新版模型权重。
 
 ## 快速开始
 
-安装依赖，建议使用环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 nccl2.10.3 deepspeed0.8.3 torch1.9.0
-
 下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
+安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
 ```bash
 git lfs install
 git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B
-git clone https://github.com/Tencent/TencentPretrain.git
+git clone https://github.com/fengyh3/llama_inference.git
 
-cd TencentPretrain 
+cd llama_inference 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
-
-# 修改 utils/constants.py 文件L4，将 special_tokens_map.json 改为 llama_special_tokens_map.json
 
 #将项目中的 generate_chatllama.py 复制到 scripts/
 
-python3 scripts/generate_chatllama.py --load_model_path ../ChatLLaMA-zh-7B/ChatLLaMA_7B.bin --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model \
-                               --test_path beginning.txt --prediction_path generated_sentence.txt \
-                               --config_path models/llama/7b_config.json --seq_length 256
+python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
+                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --config_path config/llama_7b_config.json \
+                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512
 ```
 
-## CPU本地部署
+### 多轮对话
+
+TODO
+
+### 4-bit 推理加速
+
+```bash
+python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
+                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --config_path config/llama_7b_config.json \
+                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512 --use_int8 
+```
+
+### 微服务部署
+
+安装依赖：flask
+```bash
+python3 llama_server.py --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                        --config_path config/llama_7b_config.json \
+                        --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512
+
+curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"question": "北京有什么好玩的地方？"}'
+```
+
+
+### 5-bit CPU本地部署
 
 将int4量化后的模型权重部署在本地使用CPU推理。
 
@@ -98,12 +127,13 @@ git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4
 cd llama.cpp
 make
 ./main -m ../ChatLLaMA-zh-7B-int4/chatllama-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 256
-
 ```
 
 
-
 ## 模型训练
+
+安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 nccl2.10.3 deepspeed0.8.3 torch1.9.0
+
 ### 中文增量预训练
 
 以 7B 模型为例，首先下载[预训练LLaMA权重](https://huggingface.co/decapoda-research/llama-7b-hf)，转换到TencentPretrain格式：
@@ -124,7 +154,7 @@ python3 preprocess.py --corpus_path $CORPUS_PATH --spm_model_path $LLaMA_PATH/to
 预训练：
 
 ```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.json \
+deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json \
                       --pretrained_model_path models/llama-7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
@@ -132,6 +162,8 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.jso
                       --world_size 8 --data_processor lm \
                       --total_steps 300000 --save_checkpoint_steps 5000 --batch_size 24
 ```
+
+
 
 ### 中文指令学习
 
@@ -145,12 +177,12 @@ python3 preprocess.py --corpus_path $INSTRUCTION_PATH --spm_model_path $LLaMA_PA
 指令微调：
 
 ```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_config.json \
+deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json \
                       --pretrained_model_path models/llama_zh_7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
                       --output_model_path models/chatllama_7b \
-                      --world_size 8 --data_processor lm \
+                      --world_size 8 --data_processor alpaca \
                       --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
 ```
 
