@@ -62,17 +62,16 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 **33B**：基础模型预计4月20日公开  
 **65B**：规划中
 
-<div style="display:none">
+<!-- 
 🤗**HuggingFace模型**  
-[7B 基础模型]()｜ [7B 对话模型]() | [13B 基础模型]()
-</div>
+[7B 基础模型]()｜ [7B 对话模型]() | [13B 基础模型]() -->
+
 
 模型仍在迭代中，每周更新一次新版模型权重。
 
 ## 快速开始
 
-下载预训练 ChatLLaMA 权重，使用 TencentPretrain 进行对话：
-安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
+下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
 ```bash
 git lfs install
