@@ -157,7 +157,7 @@ python3 preprocess.py --corpus_path $CORPUS_PATH --spm_model_path $LLaMA_PATH/to
 预训练：
 
 ```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json \
+deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3 \
                       --pretrained_model_path models/llama-7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
@@ -180,7 +180,7 @@ python3 preprocess.py --corpus_path $INSTRUCTION_PATH --spm_model_path $LLaMA_PA
 指令微调：
 
 ```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json \
+deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3\
                       --pretrained_model_path models/llama_zh_7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
