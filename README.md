@@ -81,8 +81,6 @@ git clone https://github.com/fengyh3/llama_inference.git
 cd llama_inference 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
 
-#将项目中的 generate_chatllama.py 复制到 scripts/
-
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
                       --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
                       --config_path config/llama_7b_config.json \
@@ -132,6 +130,12 @@ make
 ## 模型训练
 
 安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 nccl2.10.3 deepspeed0.8.3 torch1.9.0
+
+使用 TencentPretrain 训练：
+```
+git clone https://github.com/Tencent/TencentPretrain.git
+cd TencentPretrain
+```
 
 ### 中文增量预训练
 
