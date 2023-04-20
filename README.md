@@ -57,17 +57,22 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 LLaMA_zh]()｜ [对话模型 ChatLLaMA🔥](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
-**13B**：预计 ~~4月11日~~ 4月20日公开  
-**33B**：基础模型预计4月20日公开  
+**7B**：[基础模型 LLaMA-zh-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**13B**：[基础模型 LLaMA-zh-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 ChatLLaMA-zh-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
+**33B**：上传中  
 **65B**：规划中
 
 <!-- 
 🤗**HuggingFace模型**  
 [7B 基础模型]()｜ [7B 对话模型]() | [13B 基础模型]() -->
 
+### 训练情况
 
 模型仍在迭代中，每周更新一次新版模型权重。
+<center class="half">
+    <img src="assets/loss.png" width="500"/><img src="assets/acc.png" width="500"/>
+</center>
+
 
 ## 快速开始
 
@@ -135,6 +140,8 @@ make
 ```
 git clone https://github.com/Tencent/TencentPretrain.git
 cd TencentPretrain
+
+#将 tencentpretrain/utils/constants.py 文件中 L4: special_tokens_map.json 修改为 llama_special_tokens_map.json
 ```
 
 ### 中文增量预训练
@@ -180,7 +187,7 @@ python3 preprocess.py --corpus_path $INSTRUCTION_PATH --spm_model_path $LLaMA_PA
 指令微调：
 
 ```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3\
+deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3 \
                       --pretrained_model_path models/llama_zh_7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
@@ -195,140 +202,60 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 
 
 <details>
-<summary><b>推荐/问答</b></summary>
+<summary><b>常识推理</b></summary>
 
-> **用户：** 上海有什么好玩的地方？
-> 
-> **ChatLLaMA：** 上海有许多好玩的地方，您可以去上海迪士尼度假区、城隍庙、外滩和南京路步行街等景点。此外，您还可以尝试品尝当地的美食，包括小笼包、生煎包和海鲜等。
-
->**用户：** 给我介绍一本关于哲学的好书。
->
-> **ChatLLaMA：** 我对哲学感兴趣，但是我没有经验或者知识来理解这个领域。
-
->**用户：** 给我推荐一款适合在家锻炼的运动器材。
->
-> **ChatLLaMA：** 你可以考虑购买一台哑铃和一个瑜伽垫来制作你自己的训练计划。哑铃可以帮助你进行许多不同的锻炼，例如肩部、背部、手臂、腹部和腿部。瑜伽垫可以帮助你践行瑜伽，提高柔韧性和平衡性。你可以通过网上购买这些器材，或者前往当地的健身房或运动器材店选择适合你的器材。
-
->**用户：** 给我推荐一家附近的西餐厅。我的位置是深圳市南山区粤海街道。
->
-> **ChatLLaMA：** 推荐辰星餐厅，地址：深圳市南山区香洲海湾辰景花园B区2F，靠近粤海街道，为您提供美味的西餐和精致的服务。此餐厅的特色是提供创意美食和时尚的餐饮环境。特色菜包括香煎牛排、海鲜披萨和芝士龙虾意面等。服务员热情周到，餐厅经营时间为晚餐至凌晨2点。以下是更多附近西餐厅的推荐：1. Fleming's Steakhouse & Wine Bar：地址：深圳市福田区华强南路8号
+TODO
 
 </details>
 
 
 <details>
-<summary><b>机器翻译</b></summary>
+<summary><b>逻辑推理</b></summary>
 
-> **用户：** 翻译成英文：大量独生子女的出现，不仅使中国的家庭结构发生了变化，而且也带来了一些令人担忧的社会问题。
->
-> **ChatLLaMA：** It led to the increase of the number of single-child families and also to some social problems in China.
-
-> **用户：** 翻译成日语：每一个成就都始于勇于尝试的决心。
->
-> **ChatLLaMA：** 大切なことをすることで、どんな成就がもるようになります。
+TODO
 
 </details>
 
 
 <details>
-<summary><b>数学/代码</b></summary>
+<summary><b>知识问答</b></summary>
 
-> **用户：** 创建一个包含十个元素的列表，其中每个元素都是斐波那契数列中前十个数字之一。
->
-> **ChatLLaMA：** 以下是斐波那契数列中前十个数字： 0，1, 1, 2, 3, 5, 8, 13, 21, 34
-
-> **用户：** 输入两个数字，返回它们之间的所有质数。 3, 31 。
->
-> **ChatLLaMA：** 3, 3, 5, 7, 11, 13, 17
-
-> **用户：** 写一个python函数在一个列表中找出只出现一次的数字。
->
-> **ChatLLaMA：** 可以使用集合来实现。将函数传递需要搜索的列表并实现“只出现一次”的条件。然后使用“集合”渐进式辨识搜索的数字，并返回结果。伪代码如下：
-```python
-python def single_digit(lst):
-     seen = set()
-     for num in lst:
-         if seen.add(num) and num != seen:
-             return list(seen)
-     return [] 
-```
-> 调用示例：
-> lst = [4, 2, 5, 4, 1, 4, 6, 5, 4, 8, 4]  
-> res = single_digit(lst)  
-> print(res)  
-> 输出 [4, 1]
+TODO
 
 </details>
 
 <details>
-<summary><b>机器写作</b></summary>
+<summary><b>语义理解</b></summary>
 
-> **用户：**  编写一则关于科技新闻的新闻稿。今天小米公司推出了一款全新的智能手表，配备了各种健康和娱乐功能。请编写一则新闻稿，介绍这款智能手表的特点，功能和价格。
->
-> **ChatLLaMA：** 据小米公司透露，这款智能手表名为“小米超级手表”，将于今天晚间在北京亮相。该手表采用了最新的芯片和人工智能技术，支持多项健康和娱乐功能。其中，小米Supermicro通过人工智能监测用户的健康状况，包括心率、血压、睡眠质量等指标，并给出相应的建议。同时，该手表还支持语音助手、智能提醒、地图导航等功能。另外，小米Supermicro的价格为2999元人民币，将于11月11日在小米官网和线下商城正式上市。
-
-> **用户：** 根据标题写论文摘要：地缘政治视野中的中亚及其对中国的影响。
->
-> **ChatLLaMA：** 中亚的地缘政治特殊性使其成为促进中国与周边国家关系发展的重要平台.中亚不同国家之间的地缘关系和历史文化传统使其在国际政治舞台上具有不同的角色和存在的问题.以俄罗斯为例,它在即位的地缘位置使其成为东欧和中亚的地缘大国,但由于其历史文化和民族结构的特殊性,其在国际上的地位和影响力受到限制,因而其对中国的影响主要体现在东欧地区.美国由于其地缘位置和能力的优势,对中亚地区的影响也比较显著,它的国家利益和政治角色使其在中亚地区的影响力不断扩张,特别是在 Turkmenistan、Kazakhstan、Uzbekistan 三个“新兴市场”的地区,其通过提供经济、政治和军事援助来塑造当地的...
-
-> **用户：** 写一首关于北京的冬天的诗。
->
-> **ChatLLaMA：** 城市中尽是眼角的积雪。   
-霜凌天空中仿佛被一层层烙印，  
-历经很多年的历史与文化，  
-这个城市慢慢地融化在大地里、  
-成为了这个大都市的一部分。  
-疲惫的人们在冬天裹上毛衣，  
-打车穿梭着，  
-寻找避风居所，  
-每一个角落都蕴含着心中的寂静，  
-成为了这个城市的舒适感，  
-感受着历史沉淀的厚重。  
-当太阳升起时，  
-城市重新收缩回渔船，  
-每一个角度都被沉默，  
+TODO
 
 </details>
 
 <details>
-<summary><b>与 ChatGPT 对比</b></summary>
+<summary><b>数值计算</b></summary>
 
-我们选择了几个角度刁钻的中文样本，对比 ChatLLaMA 和 ChatGPT 的回答。
+TODO
 
-**ChatLLaMA:**
+</details>
 
-> 中文分词：无线电法国别研究
->
-> 分词结果分别为：无线电，法国，别研究。
+<details>
+<summary><b>诗文写作</b></summary>
 
+TODO
 
-> 来到杨过曾经生活过的地方，小龙女动情地说：“我也想过过过儿过过的生活。”
-> 
-> 杨过的居所在千年古镇赵州桥的西端，小龙女听宋词“赵州桥日照黄门城”，马上想到了自己的梦想。在千年古镇看着古色古香的宫殿，小龙女也想到曾经生活的杨过。
+</details>
 
->  对叙打击是一次性行为？
-> 
-> 对叙打击是指一次性的某种军事行动，它的主要目的是打击受到威胁的国家或地区。这意味着这些行动在一个特定时间和地点内采取，并且有明确的目的和结束时间。
+<details>
+<summary><b>文本翻译</b></summary>
 
->  《绿林俊杰》--林俊杰做错了什么？为什么要绿他
-> 
-> 林俊杰做错了主持节目《绿林俊杰》的事情虽然被很多人提及和不断被涉及，但目前仍没有官方结论和解。
+TODO
 
-> 如何解释这句话：过几天天天天气不好
-> 
-> 这句话传达了天气情况总是不好的感觉。
+</details>
 
-**ChatGPT:**
+<details>
+<summary><b>歧义理解</b></summary>
 
-![](assets/chatgpt_1.jpg)
-
-![](assets/chatgpt_2.jpg)
-
-![](assets/chatgpt_3.jpg)
-
-![](assets/chatgpt_4.jpg)
-
-![](assets/chatgpt_5.jpg)
+TODO
 
 </details>
 
