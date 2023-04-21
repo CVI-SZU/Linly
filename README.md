@@ -17,8 +17,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 **项目特点**
 + 通过 Full-tuning （全参数训练）获得中文模型权重，提供 TencentPretrain 与 HuggingFace 版本
++ 汇总中文开源社区指令数据，提供目前最大的中文 LLaMA 模型
 + 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
-+ 提供目前最大的中文 LLaMA 模型
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#todo-list)
@@ -61,12 +61,14 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 **7B**：[基础模型 LLaMA-zh-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
 **13B**：[基础模型 LLaMA-zh-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 ChatLLaMA-zh-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
-**33B**：上传中  
-**65B**：规划中
+**33B**：[33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
+**65B**：训练中
 
-<!-- 
-🤗**HuggingFace模型**  
-[7B 基础模型]()｜ [7B 对话模型]() | [13B 基础模型]() -->
+
+🤗 **HuggingFace模型**  
+[7B 基础模型](https://huggingface.co/P01son/LLaMA-zh-7b-hf) | [13B 基础模型](https://huggingface.co/P01son/LLaMA-zh-13b-hf) ｜  [33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
+[7B 对话模型](https://huggingface.co/P01son/ChatLLaMA-zh-7b-hf) | [13B 对话模型](https://huggingface.co/P01son/ChatLLaMA-zh-13b-hf) 
+
 
 ### 训练情况
 
