@@ -177,7 +177,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
                       --output_model_path models/llama_zh_7b \
-                      --world_size 8 --data_processor lm \
+                      --world_size 8 --data_processor lm  --deepspeed_checkpoint_activations \
                       --total_steps 300000 --save_checkpoint_steps 5000 --batch_size 24
 ```
 
@@ -200,7 +200,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
                       --output_model_path models/chatllama_7b \
-                      --world_size 8 --data_processor alpaca \
+                      --world_size 8 --data_processor alpaca  --deepspeed_checkpoint_activations \
                       --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
 ```
 
