@@ -25,6 +25,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 ## News
 
++ **[2023/4/21]** 🚀 正式发布 ChatLLaMA-zh-13B 对话模型、LLaMA-zh-33B 中文基础模型
+
 + **[2023/4/17]** [llama_inference](https://github.com/fengyh3/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
 + **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行 
