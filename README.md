@@ -98,7 +98,10 @@ python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
 
 ### 多轮对话
 
-TODO
+python3 llama_dialogue.py --seq_length 512 --top_k 10   \
+                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --config_path ./config/llama_7b_config.json \
+                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model
 
 ### Int8 推理加速
 
@@ -297,9 +300,10 @@ ChatLLaMA 完全基于社区开放语料训练，内容未经人工修正。受�
 
 ## TODO List
 
-- [ ] HuggingFace 转换脚本和权重上传
-- [ ] 支持量化模型 CUDA 部署
-- [ ] ChatLLaMA 领域适应案例
+- [x] HuggingFace 转换脚本和权重上传
+- [x] 支持量化模型 CUDA 部署
+- [ ] 中文词表扩充，字词结合tokenizer
+- [ ] ChatLLaMA 领域适配案例
 - [ ] 强化学习
 
 ## License
@@ -312,7 +316,7 @@ Following LLaMA, our pre-trained weights are released under GNU General Public L
 
 We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chinese-ChatLLaMA projects.
 
-Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](https://github.com/zhezhaoa), [Yuhao Feng](https://github.com/fengyh3), [Cheng Hou](https://github.com/hhou435), [Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
+Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](https://github.com/zhezhaoa), [Yuhao Feng](https://github.com/fengyh3), [Cheng Hou](https://github.com/hhou435), [Xiaoqin Wang](), [Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
 
 Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN), Kimmo Yan
 
