@@ -100,10 +100,12 @@ python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
 
 ### 多轮对话
 
+```bash
 python3 llama_dialogue.py --seq_length 512 --top_k 10   \
                       --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
                       --config_path ./config/llama_7b_config.json \
                       --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model
+```
 
 ### Int8 推理加速
 
