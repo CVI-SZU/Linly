@@ -383,7 +383,9 @@ Following LLaMA, our pre-trained weights are released under GNU General Public L
 
 We thank contributors for both [TencentPretrain](https://github.com/Tencent/TencentPretrain) and Chinese-ChatLLaMA projects.
 
-Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](https://github.com/zhezhaoa), [Yuhao Feng](https://github.com/fengyh3), [Cheng Hou](https://github.com/hhou435), [Xiaoqin Wang](), [Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc), [Xianxu Hou](https://houxianxu.github.io/)
+Authors: [Yudong Li](https://github.com/ydli-ai), [Zhe Zhao](https://github.com/zhezhaoa), [Yuhao Feng](https://github.com/fengyh3), [Cheng Hou](https://github.com/hhou435), [Xiaoqin Wang](),
+[Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc),
+[Xianxu Hou](https://houxianxu.github.io/) , [Yiren Chen](), [Jing Zhao](), [Ningyuan Sun]()
 
-Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN), Kimmo Yan
+Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN)
 
