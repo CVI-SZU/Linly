@@ -349,8 +349,8 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 
 ## 局限性
 
-ChatLLaMA 完全基于社区开放语料训练，内容未经人工修正。受限于模型和训练数据规模，ChatLLaMA 目前的语言能力较弱，仍在不断提升中。
-我们已经观察到 ChatLLaMA 在多轮对话、逻辑推理、知识问答等场景具有明显缺陷，也可能产生带有偏见或有害内容。
+Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正。受限于模型和训练数据规模，Linly-ChatFlow 目前的语言能力较弱，仍在不断提升中。
+我们已经观察到 Linly-ChatFlow 在多轮对话、逻辑推理、知识问答等场景具有明显缺陷，也可能产生带有偏见或有害内容。
 
 此外，由于增量训练和指令精调阶段使用了相同的预训练目标（causal LM），我们发现在一些情况下模型会续写指令（例如，语义理解-Q4-13B），我们将在下个版本解决这一问题。
 
