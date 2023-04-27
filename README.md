@@ -9,11 +9,11 @@
 
 
 本项目向社区提供中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据。
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、33B、65B 规模的中文基础模型 LLaMA-zh 权重。
+模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
 
 Linly-ChatFlow 支持简繁体中文、英文、日文等多语言。
 LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到中文上，首先进行中文增量预训练，
-使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Chinese-ChatLLaMA。
+使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Linly-ChatFlow。
 
 **项目特点**
 + 通过 Full-tuning （全参数训练）获得中文模型权重，提供 TencentPretrain 与 HuggingFace 版本
@@ -35,7 +35,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 + **[2023/4/1]** 更新 4-bit 量化版本 ChatLLaMA 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理
 
-+ **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 ChatLLaMA-zh-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
++ **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 Linly-ChatFlow-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
 
 -----
 
@@ -61,7 +61,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 Linly-ChatFlow](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
 **13B**：[基础模型 Linly-Chinese-LLaMA-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 Linly-ChatFlow-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
 **33B**：[33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
 **65B**：训练中
