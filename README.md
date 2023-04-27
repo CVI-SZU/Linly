@@ -8,10 +8,10 @@
 
 
 
-本项目向社区提供中文对话模型 ChatLLama 、中文基础模型 LLaMA-zh 及其训练数据。
+本项目向社区提供中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据。
 模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、33B、65B 规模的中文基础模型 LLaMA-zh 权重。
-    
-ChatLLaMA 支持简繁体中文、英文、日文等多语言。
+
+Linly-ChatFlow 支持简繁体中文、英文、日文等多语言。
 LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到中文上，首先进行中文增量预训练，
 使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Chinese-ChatLLaMA。
 
@@ -21,13 +21,13 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
-![](assets/chatllama.jpg)
+![](assets/chatflow.jpg)
 
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#todo-list)
 
 ## News
 
-+ **[2023/4/21]** 🚀 正式发布 ChatLLaMA-zh-13B 对话模型、LLaMA-zh-33B 中文基础模型
++ **[2023/4/21]** 🚀 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
 
 + **[2023/4/17]** [llama_inference](https://github.com/fengyh3/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
@@ -61,8 +61,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 LLaMA-zh-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 ChatLLaMA-zh-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
-**13B**：[基础模型 LLaMA-zh-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 ChatLLaMA-zh-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
+**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 ChatLLaMA](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
+**13B**：[基础模型 Linly-Chinese-LLaMA-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 Linly-ChatFlow-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
 **33B**：[33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
 **65B**：训练中
 
@@ -166,7 +166,7 @@ python3 scripts/convert_llama_from_huggingface_to_tencentpretrain.py --input_mod
                        --output_model_path  models/llama-7b.bin --type 7B
 ```
 
-也可以下载[基础模型 LLaMA-zh-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)进行增量训练，不需要转换格式。
+也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)进行增量训练，不需要转换格式。
 
 #### 预处理
 下载[中文预训练语料](corpus/README.md)，
@@ -219,7 +219,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>常识推理</b></summary>
 
-| Prompt                        | ChatLLaMA-7B | ChatLLaMA-13B                                                                                                                                                                                                                                                                                              |
+| Prompt                        | Linly-ChatFlow-7B | Linly-ChatFlow-13B                                                                                                                                                                                                                                                                                              |
 |-------------------------------| --- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 如何提高我的时间管理技能？                 |	为了提高时间管理技能，首先要训练自己正确地安排工作任务，以避免过分劳累或者被事情所打断。可以将重要的任务记录在计划表上，并且设置合理的目标和限期，以防止焦虑和失去动力。其次，要学会有效利用空闲时间，比如看书、工作外的活动等，来改变个人生活的状态，更好地完成任务。最后，还可以通过定期回顾之前的进程来对时间管理水平进行反思，而且不要太过于严格要求自己，以避免造成心理压力。 | 以下是一些可能有用的技巧来提高时间管理技能：<br/><br/>1. 制定日程表和计划，并遵守它。 <br/>2. 集中精力处理任务，不要分散注意力。<br/>3. 利用工具和软件来帮助你更好地组织和管理时间。<br/>4. 学会说“不”，以避免过度承诺。<br/>5. 设置优先级，将最重要的事情放在首位处理。<br/>6. 使用番茄工作法或其他时间管理技巧来保持专注。<br/>7. 确保足够的睡眠和运动以保持健康状态。<br/>8. 了解自己的效率峰值时间，以便安排任务并获得更多成果。<br/>9. 通过学习新的技能和知识来提高效率。<br/>10. 监控进展并对进展进行反思和调整计划。 |
 | 应对压力最有效的方法是什么？                | 有效应对压力的方法包括：1）学会合理安排时间，以防止把所有事情都放在一天或一周内；2）要紧跟大局，不被小问题左右浮躁心态；3）学会放松自己，从而改变你的生活状态；4）及时去看医生，保持身体健康。 | 应对压力最有效的方法是学会放松自己，找到一个适合你的方式去消除压力，比如运动、音乐、读书或者与朋友交流等。同时也可以缩小工作和生活范围，给自己足够的空间去完成任务，建立更好的生活和工作平衡。                                                                                                                                                                                                            |
@@ -239,7 +239,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>逻辑推理</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B | 
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B | 
 | ----- |  ----- |  ----- |
 | 人类平均一生眨眼多少次？请尝试解释你的答案。你的解释应该逐步带领读者理解你的推理过程。| 据科学研究，一个健康成年人每天大约会眨眼150-200次左右。而人的寿命通常为70-80岁，因此在一生中眨眼的次数可以估算为：<br/><br/>每天眨眼150-200次 × 60年 = 9万-11.4万次<br/><br/>这个结果只是一个近似值，并不是百分之百准确。实际上，每个人的眨眼次数都有所不同，因为人体的特性、环境和活动方式等都会影响到眨眼次数。 | 人类平均每天需要进行15,000到20,000个眨眼动作，也就是说，他们在一生中会眨眼大约187万次。但这是基于人类生活到八十岁时间为八十年计算出来的数据，而实际上我们无法确定其中的真正值。 |
 | 地球上每天会有多少次闪电？请尝试解释你的答案。你的解释应该逐步带领读者理解你的推理过程。| 由于闪电是一种自然现象，因此我们无法准确知道每个时区每天都会发生多少次闪电。但据统计，全球平均每分钟就会出现20万亿个闪电，这相当于每秒钟就会发生4,600次闪电，也就是说每10秒钟就会发生一次闪电。 | 闪电是由云与大气中的水分子发生化学反应，产生一道强光和剧烈的声音的现象。这种现象在地球表面非常常见，而且很容易被观测到。根据不同的研究数据和统计数字，可以了解到世界各地每年平均都会有许多次的闪电。<br/><br/>例如，美国“National Geographic”网站引用美国国家科学院（NSF）和其他相关组织的研究，指出北美洲平均每年有30万次的闪电活动。而在南美洲，则有25万次左右的闪电活动。此外，日本、西非等地也有类似的统计数据。<br/><br/>另外，需要注意的是，不同地区之间的闪电活动量存在一定差异，不同地形，海拔高度和气候条件等因素也会影响到闪电活动的出现频率和时长。 |
@@ -258,7 +258,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>知识问答</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B | 
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B | 
 | ----- |  ----- |  ----- | 
 | 为什么有些人选择使用纸质地图或寻求方向，而不是依赖GPS设备或智能手机应用程序？| 人们可以选择使用纸质地图和方向，因为这种技术更加直观、安全和实际。相比于GPS技术，地图可以提供更多的信息，而不是单纯的位置信息，从而更好地指导路线。此外，由于GPS系统常常会被影响到，例如在大量建筑物周围，所以有时候GPS技术也并非完美无缺，而纸质地图和方向则更加可靠。 | 一些人可能更喜欢使用纸质地图或其他指引工具来获取路线和导航信息。这种行为的原因可以包括：<br/><br/>1. 自然界中的认知体验：对于一些人来说，在大自然中使用纸质地图等指引工具比用电子设备更加自然、真实和令人放松。他们觉得使用电子设备会分散注意力，并影响到身体与周围环境之间的联系。<br/><br/>2. 技术不可靠性：在某些情况下，如恶劣天气、通讯网络问题或者电源故障等等，使用纸质地图或其他指引工具，则能更好地确保导航过程中的安全和顺利。<br/><br/>3. 个人偏好：每个人都有不同的生活方式和习惯，有些人可能更喜欢使用传统的方法来解决问题，而不是一定要使用先进的科技。<br/><br/>4. 经济效益：纸质地图相对比起电子设备来说，成本更低，并且对于那些经常需要出门的人来说，只需要支付一次就能使用了。 | 
 | 政府如何利用财政和货币政策来应对经济衰退？| 在面临经济衰退时，政府可以通过财政和货币政策等多种手段来调节和平衡国家的金融市场。首先，它可以向中央银行投放流动性，为受到影响的公司提供贷款支持；其次，政府还可以制定一系列减税、延期缴税等方式，支持受影响的公司及个人，从而实现更有效的再分配。此外，政府也可以给予低息贷款，并扩大贷款范围，使影响最大的小企业获得长期的发展机会。 | 为了应对经济衰退，政府可以使用多种财政和货币政策。财政政策包括提供直接补贴、开展基建项目等；而货币政策则主要是通过调节市场上有关利率的变化，从而达到改善经济状况的效果。此外，还可以实行保护性贸易政策，以及设立金融机构等新设施，以刺激国内消费，并加大与其他国家或地区的合作力度，共同应对全球经济萧条。 | 
@@ -271,7 +271,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>语义理解</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B |
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B |
 | ----- |  ----- |  ----- | 
 | 近日，苹果公司起诉高通公司，状告其未按照相关合约进行合作，高通方面尚未回应。这句话中“其”指的是谁？| 苹果公司 | 我认为“其”指的是高通公司。 | 
 | 这时候放在床上枕头旁边的手机响了，我感到奇怪，因为欠费已被停机两个月，现在它突然响了。这句话中“它”指的是什么？| 这句话中“它”指的是放在床上枕头旁边的手机。 | 根据上文内容回答这个问题，从句子中可以看出，“它”指的是手机，而不是其他物品或人。 | 
@@ -285,7 +285,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>数值计算</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B | 
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B | 
 | ----- |  ----- |  ----- | 
 | 三年级同学种树80颗，四、五年级种的棵树比三年级种的2倍多14棵，三个年级共种树多少棵?| 设三年级种了x颗树，则四年级种了2x棵树，五年级种了3x棵树。三年级共种了80棵树，所以有x=80。将其代入可得：四年级种了 2×80 = 160棵树<br/>五年级种了 3×80 = 240棵树<br/>三个年级共种了 160 + 240 + 240 = 540棵树 | 设三年级种的树为x，则：四、五年级种的树为2x+14；<br/>三年级和四、五年级一共种了3x + (2x+14) = 5x+14颗树。<br/>因此，三个年级种植的树数是5x + 14棵。<br/>由于题目中没有给出每个年级种的树的数量，所以无法确定x的值。但可以肯定的是，当x等于6时，三个年级种树的数量就是最多的，也就是说三年级种树的数量为6，四、五年级种树的数量为2*6+14=28。那么，三个年级共种树的数量就是：6 + 28 = 34棵。 | 
 | 一个班总共有50个学生，其中有30个学生会打乒乓球，有40个学生会打羽毛球，有10个学生会打网球，请问：这三种球都会打的学生最多能有多少个？| 将每种运动所能容纳的学生数量相加即可得出答案：<br/>30 + 40 + 10 = 80<br/>因此，最多会打这三种球的学生是80人。 | 我们可以使用事实推理法来解决这道题目。首先，让我们列出三种球项中每个类别的人数和所涵盖的学生总数：<br/>- 打乒乓球的学生数是30个；<br/>- 打羽毛球的学生数是40个；<br/>- 打网球的学生数是10个；<br/>因此，在这些不同的活动之间选择任意两项，我们就可以得到两组相关的信息：<br/>- 如果只会打乒乓球和羽毛球，那么一共有70名学生会参与这两种运动。<br/>- 如果只会打乒乓球和网球，那么一共有60名学生会参与这两种运动。<br/>- 如果只会打羽毛球和网球，那么一共有90名学生会参与这两种运动。<br/>现在，我们需要计算将所有三项运动结合起来时的学生总数。这样，我们可以通过计算以下公式：<br/>学生数 = 打乒乓球的学生数 + 打羽毛球的学生数 - 打网球的学生数<br/>= 30 + 40 - 10<br/>= 80<br/>因此，我们得出结论：这三种球都会打的学生最多有80个。 | 
@@ -298,7 +298,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>诗文写作</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B |
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B |
 | ----- |  ----- |  ----- | 
 | 撰写一篇交响乐音乐会评论，讨论乐团的表演和观众的整体体验。| 本周末，我有幸参加了由知名交响乐团演出的音乐会。作为该团新专辑的主题曲目之一，他们给了观众们一次难忘的演出。首先，值得称道的是乐团的指挥家。他的驾驭能力令人叹服。通过一系列出色的掌控，他成功地将每位乐手们的技巧与情感完美结合，展示出来一种无法言喻的魔力。音乐会开始时，乐团的第一支曲子轻快而富有活力，极大地打动了听众的心。接下来的曲子也都非常有感染力，并且由于乐团的协同配合，使得所有曲目都变得生动、清新。特别值得一提的是副指挥的精心考究，将歌曲间的过渡自然流畅，使得整个演出更加完美。<br/><br/>此外，演出还引入了一项创意元素——视觉效果。在舞台上设置了多个LED屏幕，让整个音乐会场地氛围更加浓厚。当一部曲子完结后，屏幕上就会显示相应的画面或者文字内容，让观众可以从更深层次理解到演出背后所传达的思想。这样的创意不仅给观众们带来了更好的体验，同时也展现了音乐的多元性和包容性。<br/><br/>最后，值得一提的是音乐会的整体细节。音响效果非常精致，每个乐器都被吹奏得栩栩如生。音乐会现场布局也十分合理，音量适中。我认为，这是一场非常成功的音乐会。 | 音乐会主题：巴赫和海顿作品。参加者包括年龄层、文化程度和音乐素养不同的人群。<br/>场地设计为中心位置有舞台、两边分布座位，以及后面的立式小型管弦乐队。本次音乐会是由多种年龄、文化程度和音乐素养不同的观众组成的。在这样多元化的观众群体中，乐团展现了出色的技艺和出色的音乐表演能力。<br/><br/>首先，乐团将巴赫和海顿的作品完美地结合起来，使得整个音乐会显得非常流畅和连贯。他们温暖而动听的演奏给每位观众带来了深深的震撼和回味无穷。从第一支曲子到最后一首歌，乐团通过精湛的技艺和对音乐的深入理解，令人印象深刻。<br/><br/>此外，乐团还提供了一系列惊喜，例如慢速板块、快速弦乐部分等等，极大地丰富了音乐的内容。特别是乐团强调的节奏变换与情感的变化，更好地诠释了这些经典作品所要传达的内涵，让听众真切地感受到音乐所代表的意义。 | 
 | 为一期讨论流媒体平台对音乐行业影响的播客撰写剧本。| 请提供流媒体平台对音乐行业的影响及其可能的利与弊的内容，以便我们编写该主题的播客剧本。例如：<br/>- 在线流媒体平台是否正在改变音乐领域？<br/>- 是否有助于创作者更广泛地推销作品？<br/>- 可能出现的竞争和版权问题等等。Title: Streaming Platforms and Their Impact on the Music Industry<br/><br/>Scene 1: Introduction<br/>Host: Hi everyone, welcome to our podcast. Today we will be discussing the impact that streaming platforms have had on the music industry. So let’s get started.<br/><br/>Scene 2: The Challenges of Digital Distribution<br/>Guest: As a musician, I've seen the rise of streaming as a great opportunity for artists to reach new audiences, but it has also created challenges in terms of digital distribution. With so many platforms out there, how can an artist make sure their work is available everywhere?<br/><br/>Scene 3: Streaming vs Physical Sales<br/>Guest: There are benefits to both physical sales and streaming, but the two models are not always complementary. Some argue that streaming services have devalued the importance of album purchases by giving away music for free. How do you think this shift in consumer behavior affects the music industry?<br/><br/>Scene 4: Opportunities for Emerging Artists<br/>Guest: On the flip side, streaming services can provide emerging artists with opportunities they didn't have before. With easier access to their music, and no need for physical distribution, these artists can gain exposure more quickly than ever before.<br/><br/>Scene 5: Potential Pitfalls<br/>Guest: Of course, not all aspects of the music streaming revolution have been positive. Issues like royalties and streaming rights have arisen, along with concerns over data privacy. Is it possible for streaming services to balance the needs of artists and fans with those of the larger music industry?<br/><br/>Scene 6: Conclusion<br/>Host: Thanks to our guests today for a lively discussion about the changing landscape of streaming and its implications on the music industry. Stay tuned next week for another episode! | 主题: 如何看待音乐流媒体平台，包括Spotify, Apple Music和Tidal？以及他们是否改变了音乐产业格局？<br/>目标观众：那些对音乐有兴趣并关心该领域未来发展的人。标题: “Spotify、Apple Music和Tidal：改变音乐世界还是破坏其传统商业模式？”<br/><br/>引言: 介绍音乐行业过去20年的发展，特别是由于数字化时代音乐消费者转向流媒体平台所带来的变革。<br/><br/>主体: 分享不同意见，例如支持者认为这些平台提高了音乐的流通性，使音乐更容易接近大众；反对者则表示它们破坏了音乐家获得收入的机会，导致他们无法够好地生存下去。<br/><br/>在此基础上，我们将深入探讨这些平台如何影响音乐商业模式和市场，包括营销渠道和专辑制作成本等方面。我们还将讨论一些可能的解决方案，例如采取类似版权管理计划来保护艺术家和音乐家的利益，或者在流媒体服务中添加付费选项来创造新的商业机会。 | 
@@ -316,7 +316,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>文本翻译</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B |
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B |
 | ----- |  ----- |  ----- | 
 | 翻译成中文：Luck is a dividend of sweat. The more you sweat, the luckier you get. | 运气是努力的回报。你付出多少，就能得到多少。 | 答案：运气是勤奋的回报。你越勤奋，就会更有运气。 | 
 | 翻译成法语：运气是努力的附带好处，你流的汗水越多，你就越幸运。| La chance est le résultat de l'effort du surplus, tu pertes plus de sueur, tu es plus heureux. | 答案：La chance est la bénédiction attachée à l'effort, plus vous persévérez, plus vous êtes heureux. | 
@@ -334,7 +334,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 <details>
 <summary><b>代码</b></summary>
 
-|   | ChatLLaMA-7B | ChatLLaMA-13B | 
+|   | Linly-ChatFlow-7B | Linly-ChatFlow-13B | 
 | ----- |  ----- |  ----- | 
 | 请用python编程语言实现快速排序算法的代码| 以下是使用Python实现快速排序算法的示例代码：```python<br/>def quick_sort(arr):<br/>    if len(arr) <= 1:<br/>        return arr<br/>    else:<br/>        pivot = arr[0] # 首先选取第一个元素作为基准点<br/>        left = [x for x in arr[1:] if x < pivot] # 从左侧开始，将小于基准点的所有元素分到一起<br/>        right = [x for x in arr[1:] if x >= pivot] # 从右侧开始，将大于等于基准点的所有元素分到一起<br/>        return quick_sort(left) + [pivot] + quick_sort(right) # 递归地对左右子数组再进行排序<br/><br/># 测试<br/>arr = [64, 34, 25, 12, 22, 11, 90]<br/>print("原始数组:", arr)<br/>sorted_arr = quick_sort(arr)<br/>print("快速排序后的数组:", sorted_arr)<br/>``` | Python代码如下：# Quick sort<br/>def quickSort(arr):<br/>    if len(arr) <= 1:<br/>        return arr<br/>    else:<br/>        pivot = arr[0] # Set pivot element<br/>        less = []<br/>        greater = []<br/>        for i in range(1, len(arr)):<br/>            if arr[i] < pivot:<br/>                less.append(arr[i])<br/>            else:<br/>                greater.append(arr[i])<br/>        less.sort() # Sort the first list<br/>        greater.sort() # Sort the second list<br/>        return [less + greater][len(greater)//2] # Merge the two sorted lists to get the final result | 
 | 请用pytorch实现一个带ReLU激活函数的全连接层的代码| Python中使用PyTorch实现一个带有ReLU激活函数的全连接层可以通过以下代码实现：import torch from torch import nn,nn.Linear,nn.functional as F def full_conn(inputs):<br/>    with torch.no_grad():<br/>        # Define the convolutional layer<br/>        conv = nn.Sequential(nn.Linear(128, 32),nn.ReLU())<br/>        <br/>        # Apply convolutional layer to input data<br/>        outputs = conv(inputs)<br/>    <br/>        return outputs | 下面是一个使用PyTorch实现带有ReLU激活函数的全连接层的Python代码：<br/>import torch.nn as nn<br/>class ConvNet(nn.Module):<br/>    def __init__(self,input_size,hidden_size,dropout=0.5):<br/>        super(ConvNet, self).__init__()<br/>        self.conv1 = nn.Conv2d(input_size, hidden_size, kernel_size=[5,5], stride=2)<br/>        self.relu1 = nn.ReLU(inplace=True)<br/>        self.pool1 = nn.MaxPool2d(kernel_size=[2,2])<br/>        self.dense = nn.Sequential(<br/>            nn.Linear(hidden_size*4*4, 128),<br/>            nn.ReLU(),<br/>            nn.Dropout(dropout),<br/>            nn.Linear(128,10))<br/>def forward(self, x):<br/>    h1 = self.pool1(self.conv1(x))<br/>    h1 = self.relu1(h1)<br/>    h1 = self.dense(h1) | 
