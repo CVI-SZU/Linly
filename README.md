@@ -61,15 +61,15 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/ChatLLaMA-zh-7B)｜ [int4量化版本 Linly-ChatFlow](https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4)   
-**13B**：[基础模型 Linly-Chinese-LLaMA-13B](https://huggingface.co/P01son/LLaMA-zh-13B)｜ [对话模型 Linly-ChatFlow-13B🔥](https://huggingface.co/P01son/ChatLLaMA-zh-13B/)  
-**33B**：[33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
+**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/Linly-ChatFlow-7B)｜ [int4量化版本 Linly-ChatFlow](https://huggingface.co/P01son/Linly-ChatFlow-7B-int4)   
+**13B**：[基础模型 Linly-Chinese-LLaMA-13B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-13B)｜ [对话模型 Linly-ChatFlow-13B🔥](https://huggingface.co/P01son/Linly-ChatFlow-13B/)  
+**33B**：[33B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
 **65B**：训练中
 
 
 🤗 **HuggingFace模型**  
-[7B 基础模型](https://huggingface.co/P01son/LLaMA-zh-7b-hf) | [13B 基础模型](https://huggingface.co/P01son/LLaMA-zh-13b-hf) ｜  [33B 基础模型](https://huggingface.co/P01son/LLaMA-zh-33b-hf)  
-[7B 对话模型](https://huggingface.co/P01son/ChatLLaMA-zh-7b-hf) | [13B 对话模型](https://huggingface.co/P01son/ChatLLaMA-zh-13b-hf) 
+[7B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7b-hf) | [13B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-13b-hf) ｜  [33B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
+[7B 对话模型](https://huggingface.co/P01son/Linly-ChatFlow-7b-hf) | [13B 对话模型](https://huggingface.co/P01son/Linly-ChatFlow-13b-hf) 
 
 
 ### 训练情况
@@ -82,47 +82,47 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 ## 快速开始
 
-下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
+下载预训练 ChatFlow 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
 ```bash
 git lfs install
-git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B
+git clone https://huggingface.co/P01son/Linly-ChatFlow-7B
 git clone https://github.com/fengyh3/llama_inference.git
 
 cd llama_inference 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
 
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
-                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
                       --config_path config/llama_7b_config.json \
-                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512
+                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512
 ```
 
 ### 多轮对话
 
 ```bash
 python3 llama_dialogue.py --seq_length 512 --top_k 10   \
-                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
                       --config_path ./config/llama_7b_config.json \
-                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model
+                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model
 ```
 
 ### Int8 推理加速
 
 ```bash
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
-                      --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
                       --config_path config/llama_7b_config.json \
-                      --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512 --use_int8 
+                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512 --use_int8 
 ```
 
 ### 微服务部署
 
 安装依赖：flask
 ```bash
-python3 llama_server.py --load_model_path ../ChatLLaMA-zh-7B/chatllama_7b.bin  \
+python3 llama_server.py --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
                         --config_path config/llama_7b_config.json \
-                        --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512
+                        --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512
 
 curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"question": "北京有什么好玩的地方？"}'
 ```
@@ -135,11 +135,11 @@ curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"questi
 ```bash
 git lfs install
 git clone https://github.com/ggerganov/llama.cpp.git
-git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B-int4
+git clone https://huggingface.co/P01son/Linly-ChatFlow-7B-int4
 
 cd llama.cpp
 make
-./main -m ../ChatLLaMA-zh-7B-int4/chatllama-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 256
+./main -m ../Linly-ChatFlow-7B-int4/chatflow-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 256
 ```
 
 
@@ -166,7 +166,7 @@ python3 scripts/convert_llama_from_huggingface_to_tencentpretrain.py --input_mod
                        --output_model_path  models/llama-7b.bin --type 7B
 ```
 
-也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/LLaMA-zh-7B/)进行增量训练，不需要转换格式。
+也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7B/)进行增量训练，不需要转换格式。
 
 #### 预处理
 下载[中文预训练语料](corpus/README.md)，
@@ -206,7 +206,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
                       --pretrained_model_path models/llama_zh_7b.bin \
                       --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
                       --config_path models/llama/7b_config.json \
-                      --output_model_path models/chatllama_7b \
+                      --output_model_path models/chatflow_7b \
                       --world_size 8 --data_processor alpaca  --deepspeed_checkpoint_activations \
                       --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
 ```
@@ -370,7 +370,7 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 - [x] HuggingFace 转换脚本和权重上传
 - [x] 支持量化模型 CUDA 部署
 - [ ] 中文词表扩充，字词结合tokenizer
-- [ ] ChatLLaMA 领域适配案例
+- [ ] ChatFlow 领域适配案例
 - [ ] 强化学习
 
 ## License
