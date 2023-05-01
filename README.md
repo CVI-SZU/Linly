@@ -16,10 +16,6 @@
 
 <br/>
 <br/>
-<br/>
-<br/>
-
-
 
 **项目特点**
 + 通过 Full-tuning （全参数训练）获得中文模型权重，提供 TencentPretrain 与 HuggingFace 版本
