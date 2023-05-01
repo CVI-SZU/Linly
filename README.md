@@ -6,7 +6,7 @@
 ![](https://img.shields.io/github/languages/top/ydli-ai/Chinese-ChatLLaMA)
 ![](https://img.shields.io/github/stars/ydli-ai/Chinese-ChatLLaMA?style=social)
 
-<img src="assets/logo.jpg" width="290" hegiht="290" align=left />
+<img src="assets/logo.jpg" width="340" hegiht="340" align=left />
 
 本项目向社区提供中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据。
 模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
