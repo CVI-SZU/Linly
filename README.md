@@ -84,6 +84,8 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 
 下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
+**解码参数及详细使用说明请参考 [llama_inference](https://github.com/fengyh3/llama_inference)**
+
 ```bash
 git lfs install
 git clone https://huggingface.co/P01son/ChatLLaMA-zh-7B
@@ -97,6 +99,7 @@ python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
                       --config_path config/llama_7b_config.json \
                       --spm_model_path ../ChatLLaMA-zh-7B/tokenizer.model --seq_length 512
 ```
+
 
 ### 多轮对话
 
