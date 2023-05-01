@@ -6,15 +6,13 @@
 ![](https://img.shields.io/github/languages/top/ydli-ai/Chinese-ChatLLaMA)
 ![](https://img.shields.io/github/stars/ydli-ai/Chinese-ChatLLaMA?style=social)
 
-<img src="assets/logo.jpg" width="400" hegiht="400" align=left />
+<img src="assets/logo.jpg" width="340" hegiht="400" align=left />
 
 本项目向社区提供中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据。
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 多模态预训练框架构建， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
+模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架实现，在 32 * A100 GPU 上使用 DeepSpeed Zero3 全参数训练（Full-tuning）， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
 
 
-Linly-ChatFlow 支持简繁体中文、英文、日文等多语言。
-LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到中文上，首先进行中文增量预训练，
-使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。再通过 [Alpaca 指令微调](https://github.com/tatsu-lab/stanford_alpaca)得到 Linly-ChatFlow。
+其中，中文基础模型 Linly-Chinese-LLaMA 以 LLaMA 为底座，利用中文和中英平行增量预训练，将它在英文上强大语言能力迁移到中文上，使用的语料包括[中英平行语料](https://statmt.org/wmt18/translation-task.html#download)、[中文维基、社区互动、新闻数据](https://github.com/CLUEbenchmark/CLUECorpus2020)、[科学文献](https://github.com/ydli-ai/CSL)等。更进一步，本项目汇总了目前公开的多语言指令数据，对中文模型进行了大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。Linly-ChatFlow 支持简繁体中文、英文、日文等多语言。
 
 <br/>
 <br/>
@@ -29,7 +27,7 @@ LLaMA 在预训练阶段主要使用英文，为了将其语言能力迁移到�
 + 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 
-<img src="assets/chatflow.jpg" width=80% align=center />
+<img src="assets/chatflow.jpg" width=90% align=center />
 
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#todo-list)
 
