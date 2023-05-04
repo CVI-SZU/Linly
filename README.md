@@ -369,7 +369,6 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 <img src=assets/wechat.jpg width=50% />
 
-微信群达到人数上限时，搜索微信号 chatllama，添加为好友后拉入群聊。
 
 ## TODO List
 
