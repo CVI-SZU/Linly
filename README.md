@@ -371,7 +371,7 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 **How to join us:**
 
-[发送邮件](mailto:liyudong123@hotmail.com) 简单介绍自己的背景和研究方向
+[发送邮件](mailto:liyudong123@hotmail.com) 简单介绍自己的背景和研究兴趣方向，我们将与您取得联系
 
 **成为贡献者可以：**
 
