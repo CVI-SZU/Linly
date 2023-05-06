@@ -76,9 +76,9 @@
 
 ### 训练情况
 
-模型仍在迭代中，每周更新一次新版模型权重。
+模型仍在迭代中，本项目定期更新模型权重。
 <center class="half">
-    <img src="assets/loss.png" width="500"/><img src="assets/acc.png" width="500"/>
+    <img src="assets/loss.png" width="500"/>
 </center>
 
 
@@ -369,6 +369,16 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 <img src=assets/wechat.jpg width=50% />
 
+**How to join us:**
+
+[发送邮件](mailto:liyudong123@hotmail.com) 简单介绍自己的背景和研究方向
+
+**成为贡献者可以：**
+
+1. 与其他专业人士一同贡献力量，促进中文大语言模型发展
+3. 优先获得经过清洗的大规模语料和数据集
+4. 优先使用预训练模型权重，包括未公开的测试版本
+5. 论文/技术文章共同作者
 
 ## TODO List
 
