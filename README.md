@@ -84,6 +84,12 @@
 </center>
 
 
+### 在线试用demo
+非常感谢huggingface提供了A10G让我们构建在线demo，可以访问[Linly-ChatFlow](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow-7B)进行体验。同时也可以在huggingface的Community中对我们的项目提出改进的建议或者上传有趣的问答结果，促进Linly模型的发展。
+<img src="assets/huggingface_demo.jpg"/>
+如果想在自己的环境上构造交互式demo，欢迎关注和star项目：[llama_inference](https://github.com/fengyh3/llama_inference)
+
+
 ## 快速开始
 
 下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
