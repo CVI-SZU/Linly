@@ -85,7 +85,7 @@
 
 
 ### 在线试用demo
-非常感谢huggingface提供了A10G让我们构建在线demo，可以访问[Linly-ChatFlow](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow-7B)进行体验。同时也可以在huggingface的Community中对我们的项目提出改进的建议或者上传有趣的问答结果，促进Linly模型的发展。 
+非常感谢huggingface提供了A10G让我们构建在线demo，可以访问[Linly-ChatFlow](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)进行体验。同时也可以在huggingface的Community中对我们的项目提出改进的建议或者上传有趣的问答结果，促进Linly模型的发展。 
 
 <img src="assets/huggingface_demo.jpg"/> 
 
