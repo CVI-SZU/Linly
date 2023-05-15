@@ -27,13 +27,15 @@
 
 <img src="assets/chatflow.jpg" width=90% align=center />
 
-[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/fengyh3/llama_inference) | [领域微调示例](#todo-list)
+[中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
 
-+ **[2023/4/27]** 🚀 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
++ **[2023/5/14]** 🚀 更新 v1.1 版，使用更多训练数据，ChatFlow 序列长度提升至1024，提供在线试用和 API 接口
 
-+ **[2023/4/17]** [llama_inference](https://github.com/fengyh3/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
++ **[2023/4/27]** 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
+
++ **[2023/4/17]** [llama_inference](https://github.com/ProjectD-AI/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
 + **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行 
 
@@ -65,16 +67,14 @@
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7B/)｜ [对话模型 Linly-ChatFlow-7B](https://huggingface.co/P01son/Linly-ChatFlow-7B)｜ [int4量化版本 Linly-ChatFlow](https://huggingface.co/P01son/Linly-ChatFlow-7B-int4)   
-**13B**：[基础模型 Linly-Chinese-LLaMA-13B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-13B)｜ [对话模型 Linly-ChatFlow-13B🔥](https://huggingface.co/P01son/Linly-ChatFlow-13B/)  
-**33B**：[33B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
+**7B**：[基础模型 Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)｜ [对话模型 ChatFlow-7B](https://huggingface.co/Linly-AI/ChatFlow-7B)   
+**13B**：[基础模型 Chinese-LLaMA-13B](https://huggingface.co/Linly-AI/Chinese-LLaMA-13B)｜ [对话模型 ChatFlow-13B🔥](https://huggingface.co/Linly-AI/ChatFlow-13B)  
+**33B**：[基础模型 Chinese-LLaMA-33B (hf格式)](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
 **65B**：训练中
 
 
 🤗 **HuggingFace模型**  
-[7B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7b-hf) | [13B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-13b-hf) ｜  [33B 基础模型](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
-[7B 对话模型](https://huggingface.co/P01son/Linly-ChatFlow-7b-hf) | [13B 对话模型](https://huggingface.co/P01son/Linly-ChatFlow-13b-hf) 
-
+项目中提供 [转换脚本](./scripts/convert_llama_from_tencentpretrain_to_hf.py)，支持 TencentPretrain 格式与 Huggingface 格式互转
 
 ### 训练情况
 
@@ -84,59 +84,73 @@
 </center>
 
 
-### 在线试用demo
-非常感谢huggingface提供了A10G让我们构建在线demo，可以访问[Linly-ChatFlow](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)进行体验。同时也可以在huggingface的Community中对我们的项目提出改进的建议或者上传有趣的问答结果，促进Linly模型的发展。 
+### 在线试用
 
-<img src="assets/huggingface_demo.jpg"/> 
+在线 demo 可以访问 [Linly-ChatFlow](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow) 体验
 
-如果想在自己的环境上构造交互式demo，欢迎关注和star项目：[llama_inference](https://github.com/fengyh3/llama_inference)
+<img src="assets/huggingface_demo.jpg"/>
+
+在线 API server 试用：
+
+```bash
+curl -H 'Content-Type: application/json'  https://P01son-xxl1dlv7o2tb.serv-c1.openbayes.net -d '{"question": "北京有什么好玩的地方？"}'
+```
+
+感谢 [HuggingFace](https://huggingface.co/) 和 [OpenBayes](https://openbayes.com/) 提供用于在线体验的计算资源。
+
+![](assets/sponsors/logo-1.png)
+![](assets/sponsors/logo-2.png)
+
+
+
+如果想在自己的环境上构造交互式demo，欢迎关注和star项目：[llama_inference](https://github.com/ProjectD-AI/llama_inference)
 
 
 ## 快速开始
 
 下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
-**解码参数及详细使用说明请参考 [llama_inference](https://github.com/fengyh3/llama_inference)**
+**解码参数及详细使用说明请参考 [llama_inference](https://github.com/ProjectD-AI/llama_inference)**
 
 ```bash
 git lfs install
-git clone https://huggingface.co/P01son/Linly-ChatFlow-7B
-git clone https://github.com/fengyh3/llama_inference.git
+git clone https://huggingface.co/Linly-AI/ChatFlow-7B
+git clone https://github.com/ProjectD-AI/llama_inference
 
 cd llama_inference 
 vi beginning.txt  #编辑用户输入，例如"上海有什么好玩的地方？"
 
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
-                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
+                      --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
                       --config_path config/llama_7b_config.json \
-                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512
+                      --spm_model_path ../ChatFlow-7B/tokenizer.model --seq_length 512
 ```
 
 ### 多轮对话
 
 ```bash
 python3 llama_dialogue.py --seq_length 512 --top_k 10   \
-                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
+                      --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
                       --config_path ./config/llama_7b_config.json \
-                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model
+                      --spm_model_path ../ChatFlow-7B/tokenizer.model
 ```
 
 ### Int8 推理加速
 
 ```bash
 python3 llama_infer.py --test_path prompts.txt --prediction_path result.txt  \
-                      --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
+                      --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
                       --config_path config/llama_7b_config.json \
-                      --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512 --use_int8 
+                      --spm_model_path ../ChatFlow-7B/tokenizer.model --seq_length 512 --use_int8 
 ```
 
 ### 微服务部署
 
 安装依赖：flask
 ```bash
-python3 llama_server.py --load_model_path ../Linly-ChatFlow-7B/chatflow_7b.bin  \
+python3 llama_server.py --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
                         --config_path config/llama_7b_config.json \
-                        --spm_model_path ../Linly-ChatFlow-7B/tokenizer.model --seq_length 512
+                        --spm_model_path ../ChatFlow-7B/tokenizer.model --seq_length 512
 
 curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"question": "北京有什么好玩的地方？"}'
 ```
@@ -180,7 +194,7 @@ python3 scripts/convert_llama_from_huggingface_to_tencentpretrain.py --input_mod
                        --output_model_path  models/llama-7b.bin --type 7B
 ```
 
-也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/P01son/Linly-Chinese-LLaMA-7B/)进行增量训练，不需要转换格式。
+也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)进行增量训练，不需要转换格式。
 
 #### 预处理
 下载[中文预训练语料](corpus/README.md)，
@@ -398,6 +412,25 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 - [ ] ChatFlow 领域适配案例
 - [ ] 基于 BLOOM 的中文基础模型
 - [ ] 强化学习
+
+## Citation
+
+```
+@article{zhao2022tencentpretrain,
+  title={TencentPretrain: A Scalable and Flexible Toolkit for Pre-training Models of Different Modalities},
+  author={Zhao, Zhe and Li, Yudong and Hou, Cheng and Zhao, Jing and Tian, Rong and Liu, Weijie and Chen, Yiren and Sun, Ningyuan and Liu, Haoyan and Mao, Weiquan and others},
+  journal={arXiv preprint arXiv:2212.06385},
+  year={2022}
+}
+
+@inproceedings{li2022csl,
+  title={CSL: A Large-scale Chinese Scientific Literature Dataset},
+  author={Li, Yudong and Zhang, Yuqing and Zhao, Zhe and Shen, Linlin and Liu, Weijie and Mao, Weiquan and Zhang, Hui},
+  booktitle={Proceedings of the 29th International Conference on Computational Linguistics},
+  pages={3917--3923},
+  year={2022}
+}
+```
 
 ## License
 
