@@ -49,10 +49,10 @@
 
 + [模型下载](#模型下载) 
 + [快速开始](#快速开始)
-+ [模型训练](#模型训练)
++ [模型训练细节](#模型训练细节)
 + [生成示例](#生成示例)
 + [局限性](#局限性)
-+ [中文预训练/指令数据集](#中文预训练/指令数据集)
++ [FAQ](#FAQ)
 + [交流和问题反馈](#交流和问题反馈)
 + [TODO-List](#todo-list)
 + [License](#License)
@@ -67,15 +67,14 @@
 请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
 
 
-**7B**：[基础模型 Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)｜ [对话模型 ChatFlow-7B](https://huggingface.co/Linly-AI/ChatFlow-7B)   
-**13B**：[基础模型 Chinese-LLaMA-13B](https://huggingface.co/Linly-AI/Chinese-LLaMA-13B)｜ [对话模型 ChatFlow-13B🔥](https://huggingface.co/Linly-AI/ChatFlow-13B)  
+**7B**：[基础模型 Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)｜ [对话模型 ChatFlow-7B🔥](https://huggingface.co/Linly-AI/ChatFlow-7B)   
+**13B**：[基础模型 Chinese-LLaMA-13B](https://huggingface.co/Linly-AI/Chinese-LLaMA-13B)｜ [对话模型 ChatFlow-13B](https://huggingface.co/Linly-AI/ChatFlow-13B)  
 **33B**：[基础模型 Chinese-LLaMA-33B (hf格式)](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
 **65B**：训练中
 
 
 🤗 **HuggingFace模型**  
-项目中提供 [转换脚本](./scripts/convert_llama_from_tencentpretrain_to_hf.py)，支持 TencentPretrain 格式与 Huggingface 格式互转
-
+项目中提供 [转换脚本](./scripts/convert_llama_from_tencentpretrain_to_hf.py)，支持 TencentPretrain 格式与 Huggingface 格式互转。详细使用方法参见 ➡️ [Huggingface格式转换](https://github.com/CVI-SZU/Linly/wiki/Huggingface%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2) ⬅️ 。
 ### 训练情况
 
 模型仍在迭代中，本项目定期更新模型权重。
@@ -108,7 +107,7 @@ curl -H 'Content-Type: application/json'  https://P01son-xxl1dlv7o2tb.serv-c1.op
 
 ## 快速开始
 
-下载预训练 ChatLLaMA 权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
+下载预训练模型权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
 **解码参数及详细使用说明请参考 [llama_inference](https://github.com/ProjectD-AI/llama_inference)**
 
@@ -158,88 +157,12 @@ curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"questi
 
 ### Int4 CPU本地部署
 
-将 Int4 量化后的模型权重部署在本地使用CPU推理。
-
-```bash
-git lfs install
-git clone https://github.com/ggerganov/llama.cpp.git
-git clone https://huggingface.co/P01son/Linly-ChatFlow-7B-int4
-
-cd llama.cpp
-make
-./main -m ../Linly-ChatFlow-7B-int4/chatflow-ggml-q4_0.bin -p "北京有什么好玩的地方？\n" -n 256
-```
+ChatFlow 模型支持使用 [llama.cp]，将 Int4 量化后的模型权重部署在本地CPU推理。 详细使用方法参见 ➡️ [int4推理](https://github.com/CVI-SZU/Linly/wiki/int4%E6%8E%A8%E7%90%86) ⬅️ 。
 
 
-## 模型训练
+## 模型训练细节
 
-安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 nccl2.10.3 deepspeed0.8.3 torch1.9.0
-
-使用 TencentPretrain 训练：
-```
-git clone https://github.com/Tencent/TencentPretrain.git
-cd TencentPretrain
-
-#将 tencentpretrain/utils/constants.py 文件中 L4: special_tokens_map.json 修改为 llama_special_tokens_map.json
-```
-
-### 中文增量预训练
-
-#### 准备模型权重
-
-以 7B 模型为例，首先下载[预训练LLaMA权重](https://huggingface.co/decapoda-research/llama-7b-hf)，转换到TencentPretrain格式：
-
-```
-python3 scripts/convert_llama_from_huggingface_to_tencentpretrain.py --input_model_path $LLaMA_HF_PATH \
-                       --output_model_path  models/llama-7b.bin --type 7B
-```
-
-也可以下载[基础模型 Linly-Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)进行增量训练，不需要转换格式。
-
-#### 预处理
-下载[中文预训练语料](corpus/README.md)，
-
-```
-python3 preprocess.py --corpus_path $CORPUS_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
-                      --dataset_path $OUTPUT_DATASET_PATH --data_processor lm --seq_length 512
-```
-
-#### 预训练：
-
-```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3 \
-                      --pretrained_model_path models/llama-7b.bin \
-                      --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
-                      --config_path models/llama/7b_config.json \
-                      --output_model_path models/llama_zh_7b \
-                      --world_size 8 --data_processor lm  --deepspeed_checkpoint_activations \
-                      --total_steps 300000 --save_checkpoint_steps 5000 --batch_size 24
-```
-
-
-
-### 中文指令学习
-
-构建[指令数据集](instructions/README.md)并预处理：
-
-```
-python3 preprocess.py --corpus_path $INSTRUCTION_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
-                      --dataset_path $OUTPUT_DATASET_PATH --data_processor alpaca --seq_length 512
-```
-
-指令微调：
-
-```
-deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_config.json --enable_zero3 \
-                      --pretrained_model_path models/llama_zh_7b.bin \
-                      --dataset_path $OUTPUT_DATASET_PATH --spm_model_path $LLaMA_PATH/tokenizer.model \
-                      --config_path models/llama/7b_config.json \
-                      --output_model_path models/chatflow_7b \
-                      --world_size 8 --data_processor alpaca  --deepspeed_checkpoint_activations \
-                      --total_steps 20000 --save_checkpoint_steps 2000 --batch_size 24
-```
-
-
+模型基于 TencentPretrain 预训练和指令精调，更多详细信息参见 ➡️ [增量训练](https://github.com/CVI-SZU/Linly/wiki/%E5%A2%9E%E9%87%8F%E8%AE%AD%E7%BB%83) ⬅️ 。
 
 ## 生成示例
 
@@ -370,8 +293,7 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 | 请用python实现“给你一个未排序的整数数组nums，找出其中没有出现的最小的正整数。实现时间复杂度为O(n)并且只使用常数级别额外空间的解决方案。”| Python代码如下：<br/>```python<br/>def find_not_existing_min_positive(nums):<br/>    max_index = len(nums) - 1<br/>    for i in range(max_index + 1, 0, -1):<br/>        if nums[i] < 0:<br/>            return nums.index(i) + 1<br/>    return None<br/>``` | ```<br/>def find_minimums(nums):<br/>    min_ = nums[0]<br/>    for i in range(1, len(nums)):<br/>        if nums[i] < min_:<br/>            min_ = nums[i]<br/>    return min_<br/>``` | 
 | 请用python实现“给你一个链表数组，每个链表都已经按升序排列。将所有链表合并到一个升序链表中，返回合并后的链表。”| ```<br/>def merge_lists(list1, list2):<br/>    if len(list1) < len(list2):<br/>        merged = list1 + list2<br/>    else:<br/>        merged = list2 + list1<br/>    return merged<br/>``` | ```python<br/>def merge_sorted_linked_lists(heads):<br/>    if not heads:<br/>        return []<br/>    cur = head = heads[0]<br/>    for h in heads[1:]:<br/>        cur.next = h<br/>        cur = h<br/>    return [cur] + merge_sorted_linked_lists(heads)<br/>``` | 
 | 请用C++编程语言实现“给定一个字符串s和一个字符串数组words。words中所有字符串长度相同。s中的串联子串是指一个包含words中所有字符串以任意顺序排列连接起来的子串。| #include <iostream><br/>using namespace std;<br/>int main() {<br/>    char s[10]="This is a str";<br/>    int n = strlen(s); // strlen返回s的长度<br/>    int words_length=n+2; // words_length为字符串的长度加上两个空格<br/>    char arr[words_length]; // 创建一个新的字符串arr<br/>    <br/>    for (int i=0;i<n-2;i++) <br/>        arr[i]=s[i]; // 将s中前面的每一个字符存入到arr中<br/>    cout<<arr<<endl;<br/>    return 0;<br/>}。 | s = "abcdefg", words = {"abcd", "efg"}<br/>使用 C++ 实现该功能，可以先创建一个空的字符串 s1，然后使用for循环遍历 s 中的每个字符，并在 s1 中比较与 s 当前字符之间的长度，如果不等于 word_length，则将 word_size 加入到 s1 中；并且记录 s 当前字符及其下一个字符，形成 s1。最后返回 s1 作为结果，即为给定一个字符串 s 和一个字符串数组 words 时的字符串串联子串结果。 | 
-| 请用C++编程语言实现“给你两个字符串haystack和needle，在haystack字符串中找出needle字符串的第一个匹配项的下标（下标从 0 开始）。如果needle不是haystack的一部分，则返回-1。| int find_first_match(char *haystack, char *needle){<br/>    int i;<br/>    for (i = 0; i < strlen(haystack); i++) {<br/>        if (strcmp(haystack[i], needle) == 0) {<br/>            return i - 1; // return the first matching item's offset from beginning of haystack.<br/>        } else if (i + strlen(needle) - 1 >= 0 && strncmp(haystack+i, needle+1, strlen(needle)) == 0) {<br/>            return i; // return the first match and last match together.<br/>        }<br/>    }<br/>    return -1;<br/>} | 使用 C++ 编程语言可以实现给定两个字符串 haystack 和 needle，在 haystack 字符串中找到 needle 字符串的第一个匹配项的下标。使用 find() 函数来查找并返回其下标值，使用 -1 表示若需le 字符串不存在于 haystack 字符串中。 | 
-
+| 请用C++编程语言实现“给你两个字符串haystack和needle，在haystack字符串中找出needle字符串的第一个匹配项的下标（下标从 0 开始）。如果needle不是haystack的一部分，则返回-1。| int find_first_match(char *haystack, char *needle){<br/>    int i;<br/>    for (i = 0; i < strlen(haystack); i++) {<br/>        if (strcmp(haystack[i], needle) == 0) {<br/>            return i - 1; // return the first matching item's offset from beginning of haystack.<br/>        } else if (i + strlen(needle) - 1 >= 0 && strncmp(haystack+i, needle+1, strlen(needle)) == 0) {<br/>            return i; // return the first match and last match together.<br/>        }<br/>    }<br/>    return -1;<br/>} | 使用 C++ 编程语言可以实现给定两个字符串 haystack 和 needle，在 haystack 字符串中找到 needle 字符串的第一个匹配项的下标。使用 find() 函数来查找并返回其下标值，使用 -1 表示若需le 字符串不存在于 haystack 字符串中。 |
 
 </details>
 
@@ -380,15 +302,22 @@ deepspeed pretrain.py --deepspeed --deepspeed_config models/deepspeed_zero3_conf
 Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正。受限于模型和训练数据规模，Linly-ChatFlow 目前的语言能力较弱，仍在不断提升中。
 我们已经观察到 Linly-ChatFlow 在多轮对话、逻辑推理、知识问答等场景具有明显缺陷，也可能产生带有偏见或有害内容。
 
-此外，模型在精调阶段使用了各种公开数据的集合，我们没有对模型对自我认知进行标注，因此当问到你是谁时可能会回答"GPT","ChatGPT","MOSS"等训练语料中的信息。
-我们将在 RLHF 阶段解决这一问题。
 
-## 中文预训练/指令数据集
+## FAQ
 
-汇总开源社区构建的中文指令学习数据，并转换成统一格式用于指令微调。 
+> Q1：模型推理需要多少显存？
 
-[构建中](instructions/README.md)
+7B 模型约 14G，int8 模式 7G。13B 模型 28G，int8模式 14G。
 
+> Q2：训练时加载模型内存不够怎么办？
+
+训练初始化时，每张卡会加载一个模型的拷贝，因此内存需求为模型大小*GPU数量。
+内存不足时可以使用分块加载，详见[模型分块](https://github.com/CVI-SZU/Linly/wiki/%E6%A8%A1%E5%9E%8B%E5%88%86%E5%9D%97)。
+
+> Q3：LLaMA 词表中只有 700 个汉字，是否有扩充词表？
+
+在 Linly-Chinese-LLaMA 中，为了避免干扰已训练好的模型权重，我们没有扩充中文词表，使用原始 LLaMA 词表进行增量训练。
+在 [Linly-OpenLLaMA](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 中，我们在中文语料上重新训练了 spm tokenizer，支持中文字/词。
 
 ## 交流和问题反馈
 
@@ -409,7 +338,7 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 - [x] HuggingFace 转换脚本和权重上传
 - [x] 支持量化模型 CUDA 部署
-- [ ] 中文词表扩充，字词结合tokenizer
+- [x] 中文词表扩充，字词结合tokenizer
 - [ ] ChatFlow 领域适配案例
 - [ ] 基于 BLOOM 的中文基础模型
 - [ ] 强化学习
