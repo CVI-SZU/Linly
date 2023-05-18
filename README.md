@@ -305,19 +305,24 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 ## FAQ
 
-> Q1：模型推理需要多少显存？
+**Q1：模型推理需要多少显存？** 
 
-7B 模型约 14G，int8 模式 7G。13B 模型 28G，int8模式 14G。
+> 7B 模型约 14G，int8 模式 7G。13B 模型 28G，int8模式 14G。
 
-> Q2：训练时加载模型内存不够怎么办？
+**Q2：训练时加载模型内存不够怎么办？**
 
-训练初始化时，每张卡会加载一个模型的拷贝，因此内存需求为模型大小*GPU数量。
-内存不足时可以使用分块加载，详见[模型分块](https://github.com/CVI-SZU/Linly/wiki/%E6%A8%A1%E5%9E%8B%E5%88%86%E5%9D%97)。
+> 训练初始化时，每张卡会加载一个模型的拷贝，因此内存需求为模型大小*GPU数量。
+> 内存不足时可以使用分块加载，详见[模型分块](https://github.com/CVI-SZU/Linly/wiki/%E6%A8%A1%E5%9E%8B%E5%88%86%E5%9D%97)。
 
-> Q3：LLaMA 词表中只有 700 个汉字，是否有扩充词表？
+**Q3：LLaMA 词表中只有大约 700 个汉字，是否有扩充词表？**
 
-在 Linly-Chinese-LLaMA 中，为了避免干扰已训练好的模型权重，我们没有扩充中文词表，使用原始 LLaMA 词表进行增量训练。
+> 在 Linly-Chinese-LLaMA 中，为了避免干扰已训练好的模型权重，我们没有扩充中文词表，使用原始 LLaMA 词表进行增量训练。
 在 [Linly-OpenLLaMA](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 中，我们在中文语料上重新训练了 spm tokenizer，支持中文字/词。
+
+**Q4：是否支持LoRA训练？**
+
+> 我们公开的模型权重没有用到 LoRA，使用全参数训练（Full-tuning）。
+> TencentPretrain 框架也支持 LoRA 训练，可以根据需要使用，详见 [LoRA 训练](https://github.com/CVI-SZU/Linly/wiki/LoRA%E8%AE%AD%E7%BB%83)。
 
 ## 交流和问题反馈
 
@@ -345,22 +350,9 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 ## Citation
 
-```
-@article{zhao2022tencentpretrain,
-  title={TencentPretrain: A Scalable and Flexible Toolkit for Pre-training Models of Different Modalities},
-  author={Zhao, Zhe and Li, Yudong and Hou, Cheng and Zhao, Jing and Tian, Rong and Liu, Weijie and Chen, Yiren and Sun, Ningyuan and Liu, Haoyan and Mao, Weiquan and others},
-  journal={arXiv preprint arXiv:2212.06385},
-  year={2022}
-}
+- **CSL: A Large-scale Chinese Scientific Literature Dataset (COLING 2022)** [[paper](https://aclanthology.org/2022.coling-1.344/)][[code](https://github.com/ydli-ai/CSL)]
 
-@inproceedings{li2022csl,
-  title={CSL: A Large-scale Chinese Scientific Literature Dataset},
-  author={Li, Yudong and Zhang, Yuqing and Zhao, Zhe and Shen, Linlin and Liu, Weijie and Mao, Weiquan and Zhang, Hui},
-  booktitle={Proceedings of the 29th International Conference on Computational Linguistics},
-  pages={3917--3923},
-  year={2022}
-}
-```
+- **TencentPretrain: A Scalable and Flexible Toolkit for Pre-training Models of Different Modalities (ACL 2023)** [[paper](https://arxiv.org/abs/2212.06385)][[code](https://github.com/Tencent/TencentPretrain)]
 
 ## License
 
