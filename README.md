@@ -12,7 +12,7 @@
 模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架实现，在 32 * A100 GPU 上全参数训练（Full-tuning）， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
 中文基础模型以 LLaMA 为底座，利用中文和中英平行增量预训练，将它在英文上强大语言能力迁移到中文上。进一步，项目汇总了目前公开的多语言指令数据，对中文模型进行了大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。
 
-此外，本项目还公开从头训练的 [**Linly-OpenLLaMA**](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 模型，在 1TB 中英文语料预训练，针对中文优化使用字词结合tokenizer，模型将以 Apache 2.0 协议公开。
+此外，本项目还公开从头训练的 [**Linly-OpenLLaMA**](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 模型，在 1TB 中英文语料预训练，针对中文优化使用字词结合tokenizer，模型以 Apache 2.0 协议公开。
 
 
 <br/>
@@ -30,14 +30,15 @@
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
++ **[2023/5/14]** 🚀 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
 
-+ **[2023/5/14]** 🚀 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
++ **[2023/5/14]** 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
 
 + **[2023/4/27]** 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
 
 + **[2023/4/17]** [llama_inference](https://github.com/ProjectD-AI/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
-+ **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 流水线并行 
++ **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 
 
 + **[2023/4/1]** 更新 4-bit 量化版本 Linly-ChatFlow 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理
 
@@ -61,25 +62,46 @@
 
 ## 模型下载
 
-**使用须知** ⚠️ 
+### Linly-Chinese-LLaMA
 
-模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议，仅供研究使用，不能用于商业目的。
-请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用本仓库中的模型。
+Linly-Chinese-LLaMA 系列模型基于 LLaMA 权重和词表，在中文数据上增量预训练。
 
+**使用须知** ⚠️  LLaMA 原始模型权重基于 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 协议，仅供研究使用，不能用于商业目的。
+请确认在已[获得许可](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform?usp=send_form)的前提下使用以下模型权重。
 
-**7B**：[基础模型 Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)｜ [对话模型 ChatFlow-7B🔥](https://huggingface.co/Linly-AI/ChatFlow-7B)   
-**13B**：[基础模型 Chinese-LLaMA-13B](https://huggingface.co/Linly-AI/Chinese-LLaMA-13B)｜ [对话模型 ChatFlow-13B](https://huggingface.co/Linly-AI/ChatFlow-13B)  
-**33B**：[基础模型 Chinese-LLaMA-33B (hf格式)](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  
-**65B**：训练中
+| 模型下载                                                                   | 分类  | 训练数据      | 训练序列长度 | 版本   | 更新时间      |
+|------------------------------------------------------------------------|-----|-----------|--------|------|-----------| 
+| [Chinese-LLaMA-7B](https://huggingface.co/Linly-AI/Chinese-LLaMA-7B/)  | 基础模型 | 100G 通用语料 | 2048   | v1.2 | 2023.5.29 | 
+| [ChatFlow-7B](https://huggingface.co/Linly-AI/ChatFlow-7B)             | 对话模型 | 5M 指令数据   | 1024   | v1.1 | 2023.5.14 |
+| [Chinese-LLaMA-13B](https://huggingface.co/Linly-AI/Chinese-LLaMA-13B)  | 基础模型 | 100G 通用语料 | 2048   | v1.2 | 2023.5.29 | 
+| [ChatFlow-13B](https://huggingface.co/Linly-AI/ChatFlow-13B)              | 对话模型 | 5M 指令数据   | 1024   | v1.1 | 2023.5.14 |
+| [Chinese-LLaMA-33B (hf格式)](https://huggingface.co/P01son/Linly-Chinese-LLaMA-33b-hf)  | 基础模型 | 30G 通用语料  | 512    | v1.0 | 2023.4.27 | 
 
 
 🤗 **HuggingFace模型**  
 项目中提供 [转换脚本](./scripts/convert_llama_from_tencentpretrain_to_hf.py)，支持 TencentPretrain 格式与 Huggingface 格式互转。详细使用方法参见 ➡️ [Huggingface格式转换](https://github.com/CVI-SZU/Linly/wiki/Huggingface%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2) ⬅️ 。
-### 训练情况
+
+### Linly-OpenLLaMA
+
+Linly-OpenLLaMA 模型在大规模中英文语料上**从头训练**词表和模型参数，与原始 LLaMA 模型结构和使用方法一致。
+模型以 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议开源，支持商业用途。[训练细节](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA)
+
+| 模型下载                                                           | 分类  | 训练数据      | 训练序列长度 | 版本   | 更新时间      |
+|----------------------------------------------------------------|-----|-----------|--------|------|-----------| 
+| [OpenLLaMA-13B](https://huggingface.co/Linly-AI/OpenLLaMA-13B) | 基础模型 | 100G 通用语料 | 2048   | v0.1 | 2023.5.29 |
+
+## 训练情况
 
 模型仍在迭代中，本项目定期更新模型权重。
+
+### Linly-Chinese-LLaMA
 <center class="half">
     <img src="assets/loss.png" width="500"/>
+</center>
+
+### Linly-OpenLLaMA
+<center class="half">
+    <img src="assets/loss-openllama.png" width="500"/>
 </center>
 
 
@@ -154,6 +176,18 @@ python3 llama_server.py --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
 curl -H 'Content-Type: application/json' http://127.0.0.1:8888/chat -d '{"question": "北京有什么好玩的地方？"}'
 ```
 
+### Gradio 本地 Demo
+
+安装依赖：gradio
+
+```bash
+python llama_gradio.py --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
+                        --config_path config/llama_7b_config.json \
+                        --spm_model_path ../ChatFlow-7B/tokenizer.model --seq_length 512
+
+```
+
+在网页上打开：http://127.0.0.1:7860/
 
 ### Int4 CPU本地部署
 
@@ -326,7 +360,11 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 ## 交流和问题反馈
 
-添加微信账号 chatllama 拉入群聊
+<img src="assets/wechat.jpg" width="250" >
+
+
+
+
 
 
 ## TODO List
