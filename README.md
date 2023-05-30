@@ -191,7 +191,7 @@ python llama_gradio.py --load_model_path ../ChatFlow-7B/chatflow_7b.bin  \
 
 ### Int4 CPU本地部署
 
-ChatFlow 模型支持使用 [llama.cp]，将 Int4 量化后的模型权重部署在本地CPU推理。 详细使用方法参见 ➡️ [int4推理](https://github.com/CVI-SZU/Linly/wiki/int4%E6%8E%A8%E7%90%86) ⬅️ 。
+ChatFlow 模型支持使用 [llama.cpp](https://github.com/ggerganov/llama.cpp)，将 Int4 量化后的模型权重部署在本地CPU推理。 详细使用方法参见 ➡️ [int4推理](https://github.com/CVI-SZU/Linly/wiki/int4%E6%8E%A8%E7%90%86) ⬅️ 。
 
 
 ## 模型训练细节
