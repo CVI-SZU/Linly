@@ -9,10 +9,10 @@
 <img src="assets/logo.jpg" width="320" hegiht="400" align=left />
 
 本项目向社区提供**中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据**。
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架实现，在 32 * A100 GPU 上全参数训练（Full-tuning）， 将陆续开放 7B、13B、33B、65B 规模的中文模型权重。
+模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架全参数训练（Full-tuning），开放 7B、13B、33B、65B 规模的中文模型权重。
 中文基础模型以 LLaMA 为底座，利用中文和中英平行增量预训练，将它在英文上强大语言能力迁移到中文上。进一步，项目汇总了目前公开的多语言指令数据，对中文模型进行了大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。
 
-此外，本项目还公开从头训练的 [**Linly-OpenLLaMA**](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 模型，在 1TB 中英文语料预训练，针对中文优化使用字词结合tokenizer，模型以 Apache 2.0 协议公开。
+此外，本项目还公开从头训练的 [**Linly-OpenLLaMA**](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 模型，包含 **3B、7B、13B** 规模，在 1TB 中英文语料预训练，针对中文优化字词结合tokenizer，模型以 Apache 2.0 协议公开。
 
 
 <br/>
