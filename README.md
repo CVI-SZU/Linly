@@ -30,19 +30,30 @@
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
-+ **[2023/5/14]** 🚀 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
++ **[2023/5/31]** Linly-ChatFlow-7B 对话模型在 [SuperCLUE-琅琊榜](www.SuperCLUEAI.com) 参与排名
+
++ **[2023/5/28]** 🚀 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
 
 + **[2023/5/14]** 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
+
+
+
+<details>
+<summary><b>Past News</b></summary>
 
 + **[2023/4/27]** 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
 
 + **[2023/4/17]** [llama_inference](https://github.com/ProjectD-AI/llama_inference) 更新 8-bit 量化推理和微服务部署，大幅度提升推理速度并降低内存消耗
 
-+ **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload 
++ **[2023/4/8]** [TencentPretrain](https://github.com/Tencent/TencentPretrain) 现已支持 LoRA 训练和 DeepSpeed Zero-3 Offload
 
 + **[2023/4/1]** 更新 4-bit 量化版本 Linly-ChatFlow 模型权重，支持 [llama.cpp](https://github.com/ggerganov/llama.cpp) 高速推理
 
 + **[2023/3/28]** 开放基于 LLaMA 的中文对话模型 Linly-ChatFlow-7B ， [技术博客](https://zhuanlan.zhihu.com/p/616748134)
+
+</details>
+
+
 
 -----
 
