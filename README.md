@@ -32,7 +32,7 @@
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
-+ **[2023/5/31]** Linly-ChatFlow-7B 对话模型在 [SuperCLUE-琅琊榜](www.SuperCLUEAI.com) 参与排名
++ **[2023/5/31]** Linly-ChatFlow-7B 对话模型在 [SuperCLUE-琅琊榜](https://www.superclueai.com/) 参与排名
 
 + **[2023/5/28]** 🚀 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
 
