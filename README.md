@@ -1,4 +1,6 @@
 
+## 中文 LLaMA & OpenLLaMA 大模型
+
 [![Model License](https://img.shields.io/badge/Model%20License-GPL_v3.0-green.svg)]()
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-red.svg)]()
 ![](https://img.shields.io/github/last-commit/ydli-ai/Chinese-ChatLLaMA)
@@ -60,7 +62,7 @@
 ## 目录
 
 + [模型下载](#模型下载) 
-+ [快速开始](#快速开始)
++ [快速开始(模型使用)](#快速开始)
 + [模型训练细节](#模型训练细节)
 + [生成示例](#生成示例)
 + [局限性](#局限性)
