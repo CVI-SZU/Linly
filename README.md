@@ -144,7 +144,7 @@ Linly-OpenLLaMA 模型在大规模中英文语料上**从头训练**词表和模
 在线 API server 试用：
 
 ```bash
-curl -H 'Content-Type: application/json'  https://P01son-xxl1dlv7o2tb.serv-c1.openbayes.net -d '{"question": "北京有什么好玩的地方？"}'
+curl -H 'Content-Type: application/json' https://P01son-52nfefhaaova.serv-c1.openbayes.net -d '{"question": "北京有什么好玩的地方？"}'
 ```
 
 感谢 [HuggingFace](https://huggingface.co/) 和 [OpenBayes](https://openbayes.com/) 提供用于在线体验的计算资源。
