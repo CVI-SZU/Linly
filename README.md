@@ -389,6 +389,9 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 > 我们公开的模型权重没有用到 LoRA，使用全参数训练（Full-tuning）。
 > TencentPretrain 框架也支持 LoRA 训练，可以根据需要使用，详见 [LoRA 训练](https://github.com/CVI-SZU/Linly/wiki/LoRA%E8%AE%AD%E7%BB%83)。
 
+## 交流和问题反馈
+
+<img src="assets/wechat.jpg" width="250" >
 
 ## TODO List
 
@@ -417,7 +420,8 @@ We thank contributors for both [TencentPretrain](https://github.com/Tencent/Tenc
 
 Authors: [Yudong Li](https://github.com/ydli-ai), [Yuhao Feng](https://github.com/fengyh3), [Zhe Zhao](https://github.com/zhezhaoa), [Cheng Hou](https://github.com/hhou435),  [Wen Zhou](https://github.com/Submarinee), [Xiaoqin Wang](https://github.com/wxqlab),
 [Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc),
-[Xianxu Hou](https://houxianxu.github.io/) , [Yiren Chen](), [Jing Zhao](), [Ningyuan Sun]()
+[Xianxu Hou](https://houxianxu.github.io/) , [Yiren Chen](), [Jing Zhao](),
+[Ningyuan Sun](), [Wenjun Tang]()
 
 Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN)
 
