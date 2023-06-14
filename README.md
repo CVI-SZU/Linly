@@ -1,5 +1,5 @@
 
-## 中文 LLaMA & OpenLLaMA 大模型
+## 中文 LLaMA & OpenLLaMA & Falcon 大模型
 
 [![Model License](https://img.shields.io/badge/Model%20License-GPL_v3.0-green.svg)]()
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-red.svg)]()
@@ -10,9 +10,9 @@
 
 <img src="assets/logo.jpg" width="320" hegiht="400" align=left />
 
-本项目向社区提供**中文对话模型 Linly-ChatFlow 、中文基础模型 Linly-Chinese-LLaMA 及其训练数据**。
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架全参数训练（Full-tuning），开放 7B、13B、33B、65B 规模的中文模型权重。
-中文基础模型以 LLaMA 为底座，利用中文和中英平行增量预训练，将它在英文上强大语言能力迁移到中文上。进一步，项目汇总了目前公开的多语言指令数据，对中文模型进行了大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。
+本项目向社区提供**中文对话模型 Linly-ChatFlow 、中文基础模型 Chinese-LLaMA、Chinese-Falcon  及其训练数据**。
+模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架全参数训练（Full-tuning）。
+中文基础模型以 LLaMA 和 Falcon 为底座，利用中文和中英平行增量预训练，将它在英文上语言能力迁移到中文上。进一步，项目汇总了目前公开的多语言指令数据，对中文模型进行了大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。
 
 此外，本项目还公开从头训练的 [**Linly-OpenLLaMA**](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) 模型，包含 **3B、7B、13B** 规模，在 1TB 中英文语料预训练，针对中文优化字词结合tokenizer，模型以 Apache 2.0 协议公开。
 
@@ -21,20 +21,21 @@
 <br/>
 
 **项目特点**
-+ 通过 Full-tuning （全参数训练）获得中文LLaMA模型，提供 TencentPretrain 与 HuggingFace 版本
-+ 汇总中文开源社区指令数据，提供目前最大的中文 LLaMA 模型
++ 通过 Full-tuning （全参数训练）获得中文LLaMA、Falcon等模型，提供 TencentPretrain 与 HuggingFace 版本
 + 模型细节公开可复现，提供数据准备、模型训练和模型评估完整流程代码
 + 多种量化方案，支持 CUDA 和边缘设备部署推理
 + 基于公开数据从头训练 [Linly-OpenLLaMA](https://github.com/CVI-SZU/Linly/wiki/Linly-OpenLLaMA) ，针对中文优化字词结合tokenizer
 
-<img src="assets/chatflow.jpg" width=90% align=center />
+<img src="assets/chatflow.jpg" width=80% align=center />
 
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
++ **[2023/6/14]** 🚀 发布中文 Falcon-7B 基础模型，扩充 Falcon 词表并在大规模中文语料增量训练，[技术文章](https://zhuanlan.zhihu.com/p/636994073)
+
 + **[2023/5/31]** Linly-ChatFlow-7B 对话模型在 [SuperCLUE-琅琊榜](https://www.superclueai.com/) 参与排名
 
-+ **[2023/5/28]** 🚀 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
++ **[2023/5/28]** 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
 
 + **[2023/5/14]** 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
 
@@ -74,6 +75,16 @@
 
 
 ## 模型下载
+### Linly-Chinese-Falcon
+
+Chinese-Falcon 模型在 Falcon 基础上扩充中文词表，在中英文数据上增量预训练。
+模型以 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议开源，支持商业用途。[模型实现和训练细节](https://zhuanlan.zhihu.com/p/636994073)
+
+| 模型下载                                                                          | 分类  | 训练数据     | 训练序列长度 | 版本   | 更新时间      |
+|-------------------------------------------------------------------------------|-----|----------|--------|------|-----------| 
+| [Chinese-Falcon-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-Falcon-7B) | 基础模型 | 50G 通用语料 | 2048   | v0.1 | 2023.6.14 |
+
+
 
 ### Linly-Chinese-LLaMA
 
@@ -106,6 +117,12 @@ Linly-OpenLLaMA 模型在大规模中英文语料上**从头训练**词表和模
 ## 训练情况
 
 模型仍在迭代中，本项目定期更新模型权重。
+
+### Linly-Chinese-Falcon
+<center class="half">
+    <img src="assets/falcon_loss.png" width="500"/>
+</center>
+
 
 ### Linly-Chinese-LLaMA
 <center class="half">
@@ -213,6 +230,7 @@ ChatFlow 模型支持使用 [llama.cpp](https://github.com/ggerganov/llama.cpp)�
 
 ## 生成示例
 
+展示基于 LLaMA 的 ChatFlow 生成结果
 
 <details>
 <summary><b>常识推理</b></summary>
