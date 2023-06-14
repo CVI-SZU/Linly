@@ -1,5 +1,5 @@
 
-## 中文 LLaMA & OpenLLaMA & Falcon 大模型
+## 中文 Falcon & LLaMA & OpenLLaMA 大模型
 
 [![Model License](https://img.shields.io/badge/Model%20License-GPL_v3.0-green.svg)]()
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-red.svg)]()
