@@ -82,7 +82,7 @@ Chinese-Falcon 模型在 Falcon 基础上扩充中文词表，在中英文数据
 
 | 模型下载                                                                          | 分类  | 训练数据     | 训练序列长度 | 版本   | 更新时间      |
 |-------------------------------------------------------------------------------|-----|----------|--------|------|-----------| 
-| [Chinese-Falcon-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-Falcon-7B) | 基础模型 | 50G 通用语料 | 2048   | v0.1 | 2023.6.14 |
+| [Chinese-Falcon-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-Falcon-7B) | 基础模型 | 50G 通用语料 | 2048   | v0.2 | 2023.6.15 |
 
 
 
