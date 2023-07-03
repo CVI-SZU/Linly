@@ -417,7 +417,7 @@ We thank contributors for both [TencentPretrain](https://github.com/Tencent/Tenc
 Authors: [Yudong Li](https://github.com/ydli-ai), [Yuhao Feng](https://github.com/fengyh3), [Zhe Zhao](https://github.com/zhezhaoa), [Cheng Hou](https://github.com/hhou435),  [Wen Zhou](https://github.com/Submarinee), [Xiaoqin Wang](https://github.com/wxqlab),
 [Shuang Li](https://github.com/thulishuang), [Hao Li](https://github.com/wmpscc),
 [Xianxu Hou](https://houxianxu.github.io/) , [Yiren Chen](), [Jing Zhao](),
-[Ningyuan Sun](), [Wenjun Tang]()
+[Ningyuan Sun]() ,[Wenjun Tang](), [Xiaoshuai Chen](https://github.com/enockipp)
 
 Corresponding Authors: [Linlin Shen](https://scholar.google.com/citations?user=AZ_y9HgAAAAJ&hl=zh-CN)
 
