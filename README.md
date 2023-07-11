@@ -385,10 +385,9 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 > 我们公开的模型权重没有用到 LoRA，使用全参数训练（Full-tuning）。
 > TencentPretrain 框架也支持 LoRA 训练，可以根据需要使用，详见 [LoRA 训练](https://github.com/CVI-SZU/Linly/wiki/LoRA%E8%AE%AD%E7%BB%83)。
 
-## 交流和问题反馈
+## Star History
 
-<img src="assets/wechat.jpg" width="250" >
-
+[![Star History Chart](https://api.star-history.com/svg?repos=CVI-SZU/Linly&type=Date)](https://star-history.com/#CVI-SZU/Linly&Date)
 ## TODO List
 
 - [x] HuggingFace 转换脚本和权重上传
