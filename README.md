@@ -31,18 +31,21 @@
 [中文预训练语料](corpus/README.md) | [中文指令精调数据集](instructions/README.md) | [模型量化部署](https://github.com/ProjectD-AI/llama_inference) | [领域微调示例](https://github.com/ProjectD-AI/domain-chatflow)
 
 ## News
-+ **[2023/6/14]** 🚀 发布中文 Falcon-7B 基础模型，扩充 Falcon 词表并在大规模中文语料增量训练，[技术文章](https://zhuanlan.zhihu.com/p/636994073)
++ **[2023/7/22]** 发布 Chinese-LLaMA-2-7B 模型，基于混合语料训练，[技术文章](https://zhuanlan.zhihu.com/p/645103186)
+
++ **[2023/6/14]** 发布中文 Falcon-7B 基础模型，扩充 Falcon 词表并在大规模中文语料增量训练，[技术文章](https://zhuanlan.zhihu.com/p/636994073)
 
 + **[2023/5/31]** Linly-ChatFlow-7B 对话模型在 [SuperCLUE-琅琊榜](https://www.superclueai.com/) 参与排名
 
-+ **[2023/5/28]** 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
 
-+ **[2023/5/14]** 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
 
 
 
 <details>
 <summary><b>Past News</b></summary>
++ **[2023/5/28]** 更新 v1.2 版 Chinese-LLaMA ，序列长度提升至2048，**开放 Linly-OpenLLaMA v0.1版**
+
++ **[2023/5/14]** 更新 v1.1 版，使用更多训练数据，**ChatFlow 序列长度提升至1024，提供网页在线试用和 API**
 
 + **[2023/4/27]** 正式发布 Linly-ChatFlow-13B 对话模型、Linly-Chinese-LLaMA-33B 中文基础模型
 
@@ -75,6 +78,16 @@
 
 
 ## 模型下载
+
+### Linly-Chinese-LLaMA-2
+
+LLaMA2 扩充中文词表，在混合语料上增量预训练，[训练细节和测评](https://zhuanlan.zhihu.com/p/645103186)
+
+| 模型下载                                                                          | 分类        | 训练数据 | 训练序列长度 | 版本   | 更新时间      |
+|-------------------------------------------------------------------------------|-----------|------|--------|------|-----------| 
+| [Chinese-LLaMA-2-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-7B-hf) | 语言模型/对话模型 | 混合语料 | 2048   | v0.1 | 2023.7.22 |
+
+
 ### Linly-Chinese-Falcon
 
 Chinese-Falcon 模型在 Falcon 基础上扩充中文词表，在中英文数据上增量预训练。
