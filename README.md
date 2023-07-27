@@ -83,6 +83,8 @@
 
 LLaMA2 扩充中文词表，在混合语料上增量预训练，[训练细节和测评](https://zhuanlan.zhihu.com/p/645103186)
 
+模型仍在迭代中，定期更新模型权重。
+
 | 模型下载                                                                                | 分类        | 训练数据 | 训练序列长度 | 版本   | 更新时间      |
 |-------------------------------------------------------------------------------------|-----------|------|--------|------|-----------| 
 | [Chinese-LLaMA-2-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-7B-hf)  | 语言模型/对话模型 | 混合语料 | 2048   | v0.1 | 2023.7.22 |
@@ -128,26 +130,17 @@ Linly-OpenLLaMA 模型在大规模中英文语料上**从头训练**词表和模
 |----------------------------------------------------------------|-----|-----------|--------|------|-----------| 
 | [OpenLLaMA-13B](https://huggingface.co/Linly-AI/OpenLLaMA-13B) | 基础模型 | 100G 通用语料 | 2048   | v0.1 | 2023.5.29 |
 
-## 训练情况
+## 生成示例
 
-模型仍在迭代中，本项目定期更新模型权重。
+#### 1. 信息提取
 
-### Linly-Chinese-Falcon
-<center class="half">
-    <img src="assets/falcon_loss.png" width="500"/>
-</center>
+<img src="assets/cases/case1.jpg" width="400" >
 
+#### 2. 代码生成
+<img src="assets/cases/case2.jpg" width="400" >
 
-### Linly-Chinese-LLaMA
-<center class="half">
-    <img src="assets/loss.png" width="500"/>
-</center>
-
-### Linly-OpenLLaMA
-<center class="half">
-    <img src="assets/loss-openllama.png" width="500"/>
-</center>
-
+#### 2. 知识问答
+<img src="assets/cases/case3.jpg" width="400" >
 
 ### 在线试用
 
@@ -173,7 +166,8 @@ curl -H 'Content-Type: application/json' https://P01son-52nfefhaaova.serv-c1.ope
 
 ## 快速开始
 
-本章节介绍 TencentPretrain 格式模型权重的使用方法。
+本章节介绍 TencentPretrain 格式模型权重的使用方法（不适用hf格式权重）。
+
 下载预训练模型权重，安装依赖，测试环境: py3.8.12 cuda11.2.2 cudnn8.1.1.33-1 torch1.9.0 bitsandbytes0.37.2
 
 **解码参数及详细使用说明请参考 [llama_inference](https://github.com/ProjectD-AI/llama_inference)**
@@ -243,9 +237,9 @@ ChatFlow 模型支持使用 [llama.cpp](https://github.com/ggerganov/llama.cpp)�
 
 模型基于 TencentPretrain 预训练和指令精调，更多详细信息参见 ➡️ [增量训练](https://github.com/CVI-SZU/Linly/wiki/%E5%A2%9E%E9%87%8F%E8%AE%AD%E7%BB%83) ⬅️ 。
 
-## 生成示例
+## 更多生成示例
 
-展示基于 LLaMA 的 ChatFlow 生成结果
+展示基于 LLaMA1 的 ChatFlow 生成结果
 
 <details>
 <summary><b>常识推理</b></summary>
@@ -411,9 +405,9 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 - [x] HuggingFace 转换脚本和权重上传
 - [x] 支持量化模型 CUDA 部署
 - [x] 中文词表扩充，字词结合tokenizer
-- [ ] ChatFlow 领域适配案例
-- [ ] 基于 BLOOM 的中文基础模型
-- [ ] 强化学习
+- [ ] 领域微调、AI 智能体示例
+- [ ] 多模态能力扩充
+
 
 ## Citation
 
