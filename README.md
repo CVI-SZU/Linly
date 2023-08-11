@@ -104,7 +104,7 @@
 | 模型下载                                                                                | 分类        | 训练数据 | 训练序列长度 | 版本   | 更新时间      |
 |-------------------------------------------------------------------------------------|-----------|------|--------|------|-----------| 
 | [Chinese-LLaMA-2-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-7B-hf)  | 语言模型/对话模型 | 混合语料 | 2048   | v0.1 | 2023.7.22 |
-| [Chinese-LLaMA-2-13B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-13B-hf) | 语言模型/对话模型 | 混合语料 | 2048   | v0.1 | 2023.7.24 |
+| [Chinese-LLaMA-2-13B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-13B-hf) | 语言模型/对话模型 | 混合语料 | 2048   | v0.2 | 2023.8.12  |
 
 <br/>
 
