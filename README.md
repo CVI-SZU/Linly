@@ -423,14 +423,6 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 [![Star History Chart](https://api.star-history.com/svg?repos=CVI-SZU/Linly&type=Date)](https://star-history.com/#CVI-SZU/Linly&Date)
 
-## TODO List
-
-- [x] HuggingFace 转换脚本和权重上传
-- [x] 支持量化模型 CUDA 部署
-- [x] 中文词表扩充，字词结合tokenizer
-- [ ] 领域微调、AI 智能体示例
-- [ ] 多模态能力扩充
-
 
 ## Citation
 
