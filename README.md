@@ -46,7 +46,9 @@
 <br/>
 
 ## 新闻
-+ **[2023/7/22]** 🔥 发布 **Chinese-LLaMA-2 (7B、13B)** 模型，基于混合语料训练，[技术文章](https://zhuanlan.zhihu.com/p/645103186) - [在线体验](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)
++ **[2024/1/3]** 发布与[APUS](https://www.apusai.com/)联合训练的 **Chinese-LLaMA-2 (70B)** 模型，[下载地址](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-70B-hf)
+
++ **[2023/7/22]** 发布 **Chinese-LLaMA-2 (7B、13B)** 模型，基于混合语料训练，[技术文章](https://zhuanlan.zhihu.com/p/645103186) - [在线体验](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)
 
 + **[2023/6/14]** 发布中文 Falcon-7B 基础模型，扩充 Falcon 词表并在大规模中文语料增量训练，[技术文章](https://zhuanlan.zhihu.com/p/636994073)
 
@@ -105,6 +107,7 @@
 |-------------------------------------------------------------------------------------|-----------|------|--------|------|-----------| 
 | [Chinese-LLaMA-2-7B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-7B-hf)  | 语言模型/对话模型 | 混合语料 | 2048   | v0.1 | 2023.7.22 |
 | [Chinese-LLaMA-2-13B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-13B-hf) | 语言模型/对话模型 | 混合语料 | 2048   | v0.2 | 2023.8.12  |
+| [Chinese-LLaMA-2-70B (hf格式)](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-70B-hf) | 语言模型 | 混合语料 | 4096   | v0.1 | 2024.1.3  |
 
 <br/>
 
