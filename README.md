@@ -19,7 +19,13 @@
 
 本项目向社区提供**中文对话模型 Linly-ChatFlow 、中文基础模型 Chinese-LLaMA (1-2)、Chinese-Falcon 及其训练数据**。
 
-模型基于 [TencentPretrain](https://github.com/Tencent/TencentPretrain) 预训练框架全参数训练（Full-tuning）。
+
+其中，与APUS联合训练的Linly-70B模型各项性能指标：
+
+|  ARC   | HellaSwag   |  MMLU   | Truthful QA  |  Winogrande    | GSM8K  | C-Eval  |
+|  ----  | ----  |  ----  | ----  |  ----  | ----  | ----  |
+|  54.69  | 76.94 |  60.4  | 53.54  |  73.4 | 34.12  | 80.6  |
+
 
 中文基础模型以 LLaMA 和 Falcon 为底座，使用中文和中英平行语料进行增量预训练，将其在英文上的语言能力扩展到中文上。同时，项目汇总了目前公开的多语言指令数据，对中文模型进行大规模指令跟随训练，实现了 Linly-ChatFlow 对话模型。
 
@@ -46,7 +52,7 @@
 <br/>
 
 ## 新闻
-+ **[2024/1/3]** 发布与[APUS](https://www.apusai.com/)联合训练的 **Chinese-LLaMA-2 (70B)** 模型，[下载地址](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-70B-hf)
++ **[2024/2/4]** 发布与[APUS](https://www.apusai.com/)联合训练的 **Chinese-LLaMA-2 (70B)** 模型，[下载地址](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-70B-hf)
 
 + **[2023/7/22]** 发布 **Chinese-LLaMA-2 (7B、13B)** 模型，基于混合语料训练，[技术文章](https://zhuanlan.zhihu.com/p/645103186) - [在线体验](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)
 
