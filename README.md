@@ -52,7 +52,7 @@
 <br/>
 
 ## 新闻
-+ **[2024/2/4]** 发布与[APUS](https://www.apusai.com/)联合训练的 **Chinese-LLaMA-2 (70B)** 模型，[下载地址](https://huggingface.co/Linly-AI/Chinese-LLaMA-2-70B-hf)
++ **[2024/2/4]** 发布与[APUS](https://www.apusai.com/)联合训练的 **Chinese-LLaMA-2 (70B)** 模型，[下载地址](https://huggingface.co/Linly-AI/Chinese-LLaMA2-70B-chat-hf)
 
 + **[2023/7/22]** 发布 **Chinese-LLaMA-2 (7B、13B)** 模型，基于混合语料训练，[技术文章](https://zhuanlan.zhihu.com/p/645103186) - [在线体验](https://huggingface.co/spaces/Linly-AI/Linly-ChatFlow)
 
