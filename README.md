@@ -435,6 +435,17 @@ Linly-ChatFlow 完全基于社区开放语料训练，内容未经人工修正�
 
 ## Citation
 
+```
+@inproceedings{li2024dynamic,
+  title={Dynamic Data Sampler for Cross-Language Transfer Learning in Large Language Models},
+  author={Li, Yudong and Feng, Yuhao and Zhou, Wen and Zhao, Zhe and Shen, Linlin and Hou, Cheng and Hou, Xianxu},
+  booktitle={ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={11291--11295},
+  year={2024},
+  organization={IEEE}
+}
+```
+
 - **CSL: A Large-scale Chinese Scientific Literature Dataset (COLING 2022)** [[paper](https://aclanthology.org/2022.coling-1.344/)][[code](https://github.com/ydli-ai/CSL)]
 
 - **TencentPretrain: A Scalable and Flexible Toolkit for Pre-training Models of Different Modalities (ACL 2023)** [[paper](https://arxiv.org/abs/2212.06385)][[code](https://github.com/Tencent/TencentPretrain)]
